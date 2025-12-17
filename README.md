@@ -1,19 +1,30 @@
-# MailChat
+# SirrChat
 
-**MailChat** is a composable all-in-one email server with blockchain authentication support. It integrates enterprise-grade email server functionality with EVM wallet signature authentication to create a secure, modern email platform.
+**SirrChat** is a decentralized encrypted communication system that enables anyone to build and run their own communication node. By integrating blockchain authentication with enterprise-grade email protocols, SirrChat provides users with a fully autonomous and controllable communication platform, achieving true data sovereignty and privacy protection.
+
+**Build your own SirrChat node. Take control of your communication data.**
 
 [![License](https://img.shields.io/badge/license-GPL%203.0-blue)](LICENSE)
 [![Go Version](https://img.shields.io/badge/go-1.24+-blue.svg)](https://golang.org)
 
 [English](README.md) | [中文](README_ZH.md)
 
+## Why Build Your Own SirrChat Node?
+
+- 🔐 **Data Sovereignty** - All communication data stored on your own server
+- 🌐 **Decentralization** - No dependence on any third-party service providers
+- 🔒 **Privacy Protection** - End-to-end encryption, complete control of your communications
+- ⛓️ **Blockchain Authentication** - Decentralized identity verification based on Ethereum wallets
+- 🚀 **Independent Operation** - Build your own dedicated communication network
+
 ## Features
 
 ### Core Capabilities
-- **Full Email Server**: Complete SMTP/IMAP support with enterprise-grade features
-- **Blockchain Authentication**: EVM wallet signature-based email access control
-- **Multi-DNS Support**: Automated TLS certificates with 15+ DNS provider integrations
-- **Spam Protection**: DKIM, SPF, DMARC validation with reputation scoring
+- **Decentralized Node**: Fully autonomous communication node running independently
+- **Blockchain Identity**: Decentralized identity authentication based on EVM wallet signatures
+- **Enterprise Protocols**: Complete SMTP/IMAP support, compatible with mainstream email clients
+- **Automated Certificates**: Automatic TLS certificates with 15+ DNS provider integrations
+- **Security Protection**: DKIM, SPF, DMARC validation with reputation scoring
 - **Flexible Storage**: SQL database backends (PostgreSQL, MySQL, SQLite) and S3-compatible object storage
 
 ### Technical Specifications
@@ -28,22 +39,23 @@
 
 ## Quick Start
 
-### One-Click Installation
+### One-Click Node Setup
 
-Install and configure MailChat with a single command:
+Quickly deploy your SirrChat node with a single command:
 
 ```bash
 # Download and run the installation script
-curl -sSL https://raw.githubusercontent.com/mail-chat-chain/mailchatd/main/start.sh | bash
+curl -sSL https://raw.githubusercontent.com/mail-chat-chain/sirrchatd/main/start.sh | bash
 ```
 
-The automated installer will:
+The automated installer will help you quickly set up an independent node:
 
-1. **Download & Install** the `mailchatd` binary
-2. **Domain Configuration** - Set up your email domain
+1. **Download & Install** the `sirrchatd` node program
+2. **Domain Configuration** - Set up your node domain
 3. **DNS Provider Setup** - Choose from 15 supported providers
 4. **TLS Certificate** - Automatic ACME DNS-01 challenge setup
-5. **Service Management** - Create and start systemd services
+5. **Service Management** - Create and start node services
+6. **Node Online** - Your decentralized communication node starts running
 
 ### Supported DNS Providers
 
@@ -81,39 +93,41 @@ Software Dependencies:
 
 ```bash
 # Clone the repository
-git clone https://github.com/mail-chat-chain/mailchatd.git
-cd mailchatd
+git clone https://github.com/mail-chat-chain/sirrchatd.git
+cd sirrchatd
 
 # Build the binary
 make build
 
 # Verify installation
-./build/mailchatd --help
+./build/sirrchatd --help
 ```
 
-### Start the Server
+### Start Your Node
 
 ```bash
-# Run the mail server
-./mailchatd run
+# Run your SirrChat node
+./sirrchatd run
 
-# Or use the start.sh script for automated configuration and startup
+# Or use the start.sh script for automated node configuration and startup
 ./start.sh
 ```
 
-## Email Server Features
+## Node Features
 
-### Mail Server Capabilities
+### Decentralized Communication Capabilities
 
-- **SMTP/IMAP Services**: Full-featured email server with encrypted communication
-- **Blockchain Authentication**: Email access controlled by EVM wallet signatures
+- **Independent Node**: Fully autonomous communication node, no third-party dependencies
+- **Blockchain Identity**: Decentralized identity authentication via EVM wallet signatures
+- **Data Sovereignty**: All data stored on your node, completely under your control
+- **Protocol Compatibility**: Complete SMTP/IMAP support, compatible with various email clients
 - **Distributed Storage**: IMAP mailboxes stored in SQL with optional S3 blob storage
-- **Spam Protection**: DKIM, SPF, DMARC validation with reputation scoring
+- **Security Protection**: DKIM, SPF, DMARC validation with reputation scoring
 
-### Configuration Example
+### Node Configuration Example
 
 ```
-# mailchatd.conf
+# sirrchatd.conf - Your node configuration file
 $(hostname) = mx1.example.com
 $(primary_domain) = example.com
 
@@ -135,7 +149,7 @@ storage.imapsql local_mailboxes {
 }
 
 auth.pass_blockchain blockchain_auth {
-    blockchain &mailchatd
+    blockchain &sirrchatd
     storage &local_mailboxes
 }
 
@@ -157,26 +171,26 @@ imap tls://0.0.0.0:993 {
 
 ```bash
 # Configure DNS settings
-mailchatd dns config
+sirrchatd dns config
 
 # Check DNS configuration
-mailchatd dns check
+sirrchatd dns check
 
 # Export DNS records for domain setup
-mailchatd dns export
+sirrchatd dns export
 
 # Get public IP for A records
-mailchatd dns ip
+sirrchatd dns ip
 ```
 
-## Available Commands
+## Node Management Commands
 
 ```
-mailchatd [command]
+sirrchatd [command]
 
 Available Commands:
-  run          Start the mail server
-  creds        User credentials management
+  run          Start the SirrChat node
+  creds        Node user credentials management
   dns          DNS configuration guide and checker
   hash         Generate password hashes for use with pass_table
   imap-acct    IMAP storage accounts management
@@ -239,7 +253,7 @@ Available Commands:
 ### Performance Tuning
 
 ```
-# mailchatd.conf
+# sirrchatd.conf
 
 smtp tcp://0.0.0.0:8825 {
     limits {
@@ -291,4 +305,4 @@ This project is licensed under the GPL 3.0 License - see the [LICENSE](LICENSE) 
 
 ---
 
-**MailChat** - Modern Email Server with Blockchain Authentication
+**SirrChat** - Decentralized Encrypted Communication System. Build Your Own Communication Node.

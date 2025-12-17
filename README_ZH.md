@@ -1,19 +1,30 @@
-# MailChat
+# SirrChat
 
-**MailChat** 是一个可组合的一体化邮件服务器，支持区块链认证。它将企业级邮件服务器功能与 EVM 钱包签名认证集成，创建了一个安全、现代的邮件平台。
+**SirrChat** 是一个去中心化的加密通讯系统，允许任何人搭建和运行属于自己的通讯节点。通过集成区块链认证和企业级邮件协议，SirrChat 为用户提供完全自主可控的通讯平台，实现真正的数据主权和隐私保护。
+
+**搭建你自己的 SirrChat 节点，掌控你的通讯数据。**
 
 [![许可证](https://img.shields.io/badge/license-GPL%203.0-blue)](LICENSE)
 [![Go版本](https://img.shields.io/badge/go-1.24+-blue.svg)](https://golang.org)
 
 [English](README.md) | [中文](README_ZH.md)
 
+## 为什么要搭建自己的 SirrChat 节点？
+
+- 🔐 **数据主权** - 所有通讯数据存储在你自己的服务器上
+- 🌐 **去中心化** - 不依赖任何第三方服务提供商
+- 🔒 **隐私保护** - 端到端加密，完全掌控自己的通讯
+- ⛓️ **区块链认证** - 基于以太坊钱包的去中心化身份验证
+- 🚀 **独立运营** - 构建专属的通讯网络
+
 ## 功能特性
 
 ### 核心能力
-- **完整邮件服务器**: 企业级 SMTP/IMAP 支持
-- **区块链认证**: 基于 EVM 钱包签名的邮件访问控制
-- **多 DNS 支持**: 15+ 种 DNS 提供商的自动 TLS 证书集成
-- **垃圾邮件防护**: DKIM、SPF、DMARC 验证与信誉评分
+- **去中心化节点**: 完全自主的通讯节点，独立运行
+- **区块链身份**: 基于 EVM 钱包签名的去中心化身份认证
+- **企业级协议**: 完整的 SMTP/IMAP 支持，兼容主流邮件客户端
+- **自动化证书**: 15+ 种 DNS 提供商的自动 TLS 证书集成
+- **安全防护**: DKIM、SPF、DMARC 验证与信誉评分
 - **灵活存储**: SQL 数据库后端（PostgreSQL、MySQL、SQLite）和 S3 兼容对象存储
 
 ### 技术规格
@@ -28,22 +39,23 @@
 
 ## 快速开始
 
-### 一键安装
+### 一键搭建节点
 
-使用单条命令安装和配置 MailChat：
+使用单条命令快速搭建你的 SirrChat 节点：
 
 ```bash
 # 下载并运行安装脚本
-curl -sSL https://raw.githubusercontent.com/mail-chat-chain/mailchatd/main/start.sh | bash
+curl -sSL https://raw.githubusercontent.com/mail-chat-chain/sirrchatd/main/start.sh | bash
 ```
 
-自动安装程序将执行以下操作：
+自动安装程序将执行以下操作，帮你快速搭建独立节点：
 
-1. **下载和安装** `mailchatd` 二进制文件
-2. **域名配置** - 设置您的邮件域名
+1. **下载和安装** `sirrchatd` 节点程序
+2. **域名配置** - 设置你的节点域名
 3. **DNS 提供商设置** - 从 15 种支持的提供商中选择
 4. **TLS 证书** - 自动 ACME DNS-01 挑战设置
-5. **服务管理** - 创建并启动 systemd 服务
+5. **服务管理** - 创建并启动节点服务
+6. **节点上线** - 你的去中心化通讯节点开始运行
 
 ### 支持的 DNS 提供商
 
@@ -81,39 +93,41 @@ curl -sSL https://raw.githubusercontent.com/mail-chat-chain/mailchatd/main/start
 
 ```bash
 # 克隆仓库
-git clone https://github.com/mail-chat-chain/mailchatd.git
-cd mailchatd
+git clone https://github.com/mail-chat-chain/sirrchatd.git
+cd sirrchatd
 
 # 构建二进制文件
 make build
 
 # 验证安装
-./build/mailchatd --help
+./build/sirrchatd --help
 ```
 
-### 启动服务器
+### 启动节点
 
 ```bash
-# 运行邮件服务器
-./mailchatd run
+# 启动你的 SirrChat 节点
+./sirrchatd run
 
-# 或者使用 start.sh 脚本自动配置并启动
+# 或者使用 start.sh 脚本自动配置并启动节点
 ./start.sh
 ```
 
-## 邮件服务器功能
+## 节点功能
 
-### 邮件服务器能力
+### 去中心化通讯能力
 
-- **SMTP/IMAP 服务**: 功能完整的加密通信邮件服务器
-- **区块链认证**: 通过 EVM 钱包签名控制邮件访问
+- **独立节点**: 完全自主运行的通讯节点，不依赖第三方
+- **区块链身份**: 通过 EVM 钱包签名实现去中心化身份认证
+- **数据主权**: 所有数据存储在你的节点上，完全由你掌控
+- **协议兼容**: 完整的 SMTP/IMAP 支持，兼容各种邮件客户端
 - **分布式存储**: IMAP 邮箱存储在 SQL 中，可选 S3 blob 存储
-- **垃圾邮件防护**: DKIM、SPF、DMARC 验证与信誉评分
+- **安全防护**: DKIM、SPF、DMARC 验证与信誉评分
 
-### 配置示例
+### 节点配置示例
 
 ```
-# mailchatd.conf
+# sirrchatd.conf - 你的节点配置文件
 $(hostname) = mx1.example.com
 $(primary_domain) = example.com
 
@@ -135,7 +149,7 @@ storage.imapsql local_mailboxes {
 }
 
 auth.pass_blockchain blockchain_auth {
-    blockchain &mailchatd
+    blockchain &sirrchatd
     storage &local_mailboxes
 }
 
@@ -157,26 +171,26 @@ imap tls://0.0.0.0:993 {
 
 ```bash
 # 配置 DNS 设置
-mailchatd dns config
+sirrchatd dns config
 
 # 检查 DNS 配置
-mailchatd dns check
+sirrchatd dns check
 
 # 导出域名设置的 DNS 记录
-mailchatd dns export
+sirrchatd dns export
 
 # 获取 A 记录的公网 IP
-mailchatd dns ip
+sirrchatd dns ip
 ```
 
-## 可用命令
+## 节点管理命令
 
 ```
-mailchatd [command]
+sirrchatd [command]
 
 可用命令:
-  run          启动邮件服务器
-  creds        用户凭证管理
+  run          启动 SirrChat 节点
+  creds        节点用户凭证管理
   dns          DNS 配置指南和检查器
   hash         生成用于 pass_table 的密码哈希
   imap-acct    IMAP 存储账户管理
@@ -239,7 +253,7 @@ mailchatd [command]
 ### 性能调优
 
 ```
-# mailchatd.conf
+# sirrchatd.conf
 
 smtp tcp://0.0.0.0:8825 {
     limits {
@@ -291,4 +305,4 @@ make lint
 
 ---
 
-**MailChat** - 支持区块链认证的现代邮件服务器
+**SirrChat** - 去中心化加密通讯系统，搭建属于你自己的通讯节点

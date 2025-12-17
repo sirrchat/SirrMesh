@@ -1,16 +1,24 @@
-# MailChat Chain 项目搭建教程
+# SirrChat 节点搭建教程
 
 ## 📋 项目简介
 
-MailChat Chain 是一个企业级邮件服务器，支持 SMTP/IMAP 协议，并集成了区块链认证特性。主要特点包括：
+SirrChat 是一个去中心化的加密通讯系统，允许任何人搭建和运行属于自己的通讯节点。通过本教程，你可以部署自己的 SirrChat 节点，拥有完全的数据控制权和隐私保护。
 
-- 完整的 SMTP/IMAP 邮件服务实现
-- 区块链钱包签名认证（基于以太坊）
+**为什么要搭建自己的 SirrChat 节点？**
+- 🔐 **数据主权** - 所有通讯数据存储在你自己的服务器上
+- 🌐 **去中心化** - 不依赖任何第三方服务提供商
+- 🔒 **隐私保护** - 端到端加密，完全掌控自己的通讯
+- ⛓️ **区块链认证** - 基于以太坊钱包的去中心化身份验证
+- 🚀 **独立运营** - 构建专属的通讯网络
+
+**核心特性：**
+- 完整的 SMTP/IMAP 协议支持，兼容主流邮件客户端
+- 区块链钱包签名认证，无需传统密码系统
 - 多数据库支持（SQLite、PostgreSQL、MySQL）
 - 自动化 TLS 证书管理（ACME）
-- 支持多种 DNS 提供商
+- 支持多种 DNS 提供商自动配置
 - Prometheus 监控集成
-- 模块化设计，支持扩展
+- 模块化设计，易于扩展和定制
 
 ---
 
@@ -40,9 +48,11 @@ MailChat Chain 是一个企业级邮件服务器，支持 SMTP/IMAP 协议，并
 
 ### 方法一：使用一键安装脚本（推荐）
 
+如果你已获得 SirrChat 的安装脚本，可以使用以下命令快速搭建节点：
+
 ```bash
 # Download and execute installation script
-curl -sSL https://raw.githubusercontent.com/your-repo/mail-chat-chain/main/start.sh | bash
+curl -sSL <YOUR_SCRIPT_URL>/start.sh | bash
 ```
 
 **脚本功能：**
@@ -50,14 +60,17 @@ curl -sSL https://raw.githubusercontent.com/your-repo/mail-chat-chain/main/start
 - 下载对应平台的二进制文件
 - 配置 DNS 设置
 - 生成 systemd 服务文件
+- 一键完成节点部署
 
-### 方法二：从源码构建
+### 方法二：从源码构建（完全掌控）
+
+通过源码构建可以让你完全了解和掌控节点的每一个细节。
 
 #### 1. 克隆项目
 
 ```bash
-# Clone repository
-git clone https://github.com/your-repo/mail-chat-chain.git
+# Clone repository from your source
+git clone <YOUR_REPOSITORY_URL>
 cd mail-chat-chain
 ```
 
@@ -119,7 +132,7 @@ go mod verify
 # Build for current platform
 make build
 
-# Output: build/mailchatd
+# Output: build/sirrchatd
 ```
 
 ### 交叉编译
@@ -149,32 +162,34 @@ sudo make install
 
 ```bash
 # Build Docker image
-docker build -f Dockerfile.build -t mailchatd:latest .
+docker build -f Dockerfile.build -t sirrchatd:latest .
 
 # Extract binary from container
-docker create --name temp mailchatd:latest
-docker cp temp:/mailchatd ./build/mailchatd
+docker create --name temp sirrchatd:latest
+docker cp temp:/sirrchatd ./build/sirrchatd
 docker rm temp
 ```
 
 ---
 
-## ⚙️ 配置项目
+## ⚙️ 配置节点
+
+配置你的 SirrChat 节点，使其能够独立运行并为你的用户提供服务。所有配置数据都存储在你自己的服务器上，完全由你掌控。
 
 ### 1. 设置环境变量
 
 ```bash
-# Set MAILCHAT_HOME directory
-export MAILCHAT_HOME=$HOME/.mailchatd
+# Set SIRRCHAT_HOME directory
+export SIRRCHAT_HOME=$HOME/.sirrchatd
 
 # Create directory
-mkdir -p $MAILCHAT_HOME
+mkdir -p $SIRRCHAT_HOME
 ```
 
 **永久配置：**
 ```bash
 # Add to ~/.bashrc or ~/.zshrc
-echo 'export MAILCHAT_HOME=$HOME/.mailchatd' >> ~/.bashrc
+echo 'export SIRRCHAT_HOME=$HOME/.sirrchatd' >> ~/.bashrc
 source ~/.bashrc
 ```
 
@@ -182,9 +197,9 @@ source ~/.bashrc
 
 ```bash
 # Generate default configuration
-./build/mailchatd config init
+./build/sirrchatd config init
 
-# Configuration file location: $MAILCHAT_HOME/mailchatd.conf
+# Configuration file location: $SIRRCHAT_HOME/sirrchatd.conf
 ```
 
 ### 3. 配置数据库
@@ -192,10 +207,10 @@ source ~/.bashrc
 #### 使用 SQLite（开发环境推荐）
 
 ```conf
-# Edit $MAILCHAT_HOME/mailchatd.conf
+# Edit $SIRRCHAT_HOME/sirrchatd.conf
 storage.imapsql local_mailboxes {
     driver sqlite3
-    dsn $MAILCHAT_HOME/imapsql.db
+    dsn $SIRRCHAT_HOME/imapsql.db
 }
 ```
 
@@ -204,16 +219,16 @@ storage.imapsql local_mailboxes {
 ```conf
 storage.imapsql local_mailboxes {
     driver postgres
-    dsn postgres://username:password@localhost/mailchatdb?sslmode=disable
+    dsn postgres://username:password@localhost/sirrchatdb?sslmode=disable
 }
 ```
 
 **创建 PostgreSQL 数据库：**
 ```bash
 # Create database
-psql -U postgres -c "CREATE DATABASE mailchatdb;"
-psql -U postgres -c "CREATE USER mailchat WITH PASSWORD 'your_password';"
-psql -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE mailchatdb TO mailchat;"
+psql -U postgres -c "CREATE DATABASE sirrchatdb;"
+psql -U postgres -c "CREATE USER sirrchat WITH PASSWORD 'your_password';"
+psql -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE sirrchatdb TO sirrchat;"
 ```
 
 #### 使用 MySQL
@@ -221,16 +236,16 @@ psql -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE mailchatdb TO mailchat;"
 ```conf
 storage.imapsql local_mailboxes {
     driver mysql
-    dsn mailchat:password@tcp(localhost:3306)/mailchatdb?parseTime=true
+    dsn sirrchat:password@tcp(localhost:3306)/sirrchatdb?parseTime=true
 }
 ```
 
 **创建 MySQL 数据库：**
 ```bash
 # Create database
-mysql -u root -p -e "CREATE DATABASE mailchatdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
-mysql -u root -p -e "CREATE USER 'mailchat'@'localhost' IDENTIFIED BY 'your_password';"
-mysql -u root -p -e "GRANT ALL PRIVILEGES ON mailchatdb.* TO 'mailchat'@'localhost';"
+mysql -u root -p -e "CREATE DATABASE sirrchatdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+mysql -u root -p -e "CREATE USER 'sirrchat'@'localhost' IDENTIFIED BY 'your_password';"
+mysql -u root -p -e "GRANT ALL PRIVILEGES ON sirrchatdb.* TO 'sirrchat'@'localhost';"
 mysql -u root -p -e "FLUSH PRIVILEGES;"
 ```
 
@@ -240,7 +255,7 @@ mysql -u root -p -e "FLUSH PRIVILEGES;"
 
 ```conf
 storage.blob.fs local_fs {
-    path $MAILCHAT_HOME/blobs
+    path $SIRRCHAT_HOME/blobs
 }
 ```
 
@@ -248,7 +263,7 @@ storage.blob.fs local_fs {
 
 ```conf
 storage.blob.s3 s3_storage {
-    bucket_name mailchat-storage
+    bucket_name sirrchat-storage
     region us-east-1
     access_key_id YOUR_ACCESS_KEY
     secret_access_key YOUR_SECRET_KEY
@@ -261,13 +276,13 @@ storage.blob.s3 s3_storage {
 
 ```bash
 # Create user credentials
-./build/mailchatd creds create user@example.com
+./build/sirrchatd creds create user@example.com
 
 # Generate password hash
-./build/mailchatd hash mypassword
+./build/sirrchatd hash mypassword
 ```
 
-#### 区块链钱包认证（特色功能）
+#### 区块链钱包认证（去中心化身份）
 
 ```conf
 auth.pass_blockchain {
@@ -277,7 +292,11 @@ auth.pass_blockchain {
 ```
 
 **使用说明：**
-用户使用以太坊钱包私钥签名消息来完成认证，无需传统密码。
+这是 SirrChat 的核心特色功能，用户使用以太坊钱包私钥签名消息来完成认证，实现真正的去中心化身份验证：
+- 🔑 无需传统密码系统
+- 🌐 基于区块链的去中心化身份
+- 🔒 私钥由用户自己掌控
+- ✅ 无需依赖中心化的身份认证服务
 
 #### LDAP 认证
 
@@ -292,51 +311,56 @@ auth.ldap {
 
 ---
 
-## 🎯 运行项目
+## 🎯 运行节点
 
-### 启动邮件服务
+启动你的 SirrChat 节点后，它将成为去中心化通讯网络中的一个独立节点。你的节点将：
+- 处理本节点用户的通讯请求
+- 与其他 SirrChat 节点互联互通
+- 完全由你控制和管理，不受任何第三方干预
+
+### 启动 SirrChat 节点
 
 ```bash
 # Run in foreground
-./build/mailchatd run
+./build/sirrchatd run
 
 # Run with custom config
-./build/mailchatd run --config /path/to/config.conf
+./build/sirrchatd run --config /path/to/config.conf
 
 # Run with debug logging
-./build/mailchatd run --debug
+./build/sirrchatd run --debug
 ```
 
 ### 使用 systemd 管理（Linux）
 
 ```bash
 # Generate systemd service file
-./build/mailchatd systemd generate > /tmp/mailchatd.service
-sudo mv /tmp/mailchatd.service /etc/systemd/system/
+./build/sirrchatd systemd generate > /tmp/sirrchatd.service
+sudo mv /tmp/sirrchatd.service /etc/systemd/system/
 
 # Enable and start service
 sudo systemctl daemon-reload
-sudo systemctl enable mailchatd
-sudo systemctl start mailchatd
+sudo systemctl enable sirrchatd
+sudo systemctl start sirrchatd
 
 # Check status
-sudo systemctl status mailchatd
+sudo systemctl status sirrchatd
 
 # View logs
-sudo journalctl -u mailchatd -f
+sudo journalctl -u sirrchatd -f
 ```
 
 ### 后台运行（macOS/Linux）
 
 ```bash
 # Run in background using nohup
-nohup ./build/mailchatd run > $MAILCHAT_HOME/mailchatd.log 2>&1 &
+nohup ./build/sirrchatd run > $SIRRCHAT_HOME/sirrchatd.log 2>&1 &
 
 # Check process
-ps aux | grep mailchatd
+ps aux | grep sirrchatd
 
 # Stop process
-kill $(pgrep mailchatd)
+kill $(pgrep sirrchatd)
 ```
 
 ---
@@ -347,62 +371,62 @@ kill $(pgrep mailchatd)
 
 ```bash
 # Configure DNS provider
-./build/mailchatd dns setup
+./build/sirrchatd dns setup
 
 # Test DNS configuration
-./build/mailchatd dns verify
+./build/sirrchatd dns verify
 ```
 
 ### 用户管理
 
 ```bash
 # Create user credentials
-./build/mailchatd creds create user@example.com
+./build/sirrchatd creds create user@example.com
 
 # List users
-./build/mailchatd creds list
+./build/sirrchatd creds list
 
 # Delete user
-./build/mailchatd creds delete user@example.com
+./build/sirrchatd creds delete user@example.com
 
 # Generate password hash
-./build/mailchatd hash mypassword
+./build/sirrchatd hash mypassword
 ```
 
 ### IMAP 账户管理
 
 ```bash
 # Create IMAP account
-./build/mailchatd imap-acct create user@example.com
+./build/sirrchatd imap-acct create user@example.com
 
 # List IMAP accounts
-./build/mailchatd imap-acct list
+./build/sirrchatd imap-acct list
 
 # Delete IMAP account
-./build/mailchatd imap-acct delete user@example.com
+./build/sirrchatd imap-acct delete user@example.com
 ```
 
 ### IMAP 邮箱管理
 
 ```bash
 # Create mailbox
-./build/mailchatd imap-mboxes create user@example.com Inbox
+./build/sirrchatd imap-mboxes create user@example.com Inbox
 
 # List mailboxes
-./build/mailchatd imap-mboxes list user@example.com
+./build/sirrchatd imap-mboxes list user@example.com
 
 # Delete mailbox
-./build/mailchatd imap-mboxes delete user@example.com Trash
+./build/sirrchatd imap-mboxes delete user@example.com Trash
 ```
 
 ### IMAP 消息管理
 
 ```bash
 # List messages in mailbox
-./build/mailchatd imap-msgs list user@example.com Inbox
+./build/sirrchatd imap-msgs list user@example.com Inbox
 
 # Delete message
-./build/mailchatd imap-msgs delete user@example.com Inbox <message_id>
+./build/sirrchatd imap-msgs delete user@example.com Inbox <message_id>
 ```
 
 ---
@@ -445,7 +469,7 @@ make vulncheck
 
 ```bash
 # Build and run in one step
-make build && ./build/mailchatd run
+make build && ./build/sirrchatd run
 ```
 
 ---
@@ -481,10 +505,10 @@ log {
 **查看日志：**
 ```bash
 # If using systemd
-sudo journalctl -u mailchatd -f
+sudo journalctl -u sirrchatd -f
 
 # If using nohup
-tail -f $MAILCHAT_HOME/mailchatd.log
+tail -f $SIRRCHAT_HOME/sirrchatd.log
 ```
 
 ---
@@ -499,7 +523,7 @@ tail -f $MAILCHAT_HOME/mailchatd.log
 tls {
     acme_enabled true
     acme_email admin@example.com
-    acme_storage $MAILCHAT_HOME/acme
+    acme_storage $SIRRCHAT_HOME/acme
     dns_provider cloudflare
     dns_api_token YOUR_CLOUDFLARE_TOKEN
 }
@@ -514,7 +538,7 @@ Cloudflare、Route53、DigitalOcean、Google Cloud DNS、Vultr、Hetzner、Gandi
 # Generate self-signed certificate
 openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
 
-# Configure in mailchatd.conf
+# Configure in sirrchatd.conf
 tls {
     cert_file /path/to/cert.pem
     key_file /path/to/key.pem
@@ -558,21 +582,21 @@ sudo kill -9 $(lsof -t -i:25)
 
 ```bash
 # Test PostgreSQL connection
-psql -h localhost -U mailchat -d mailchatdb
+psql -h localhost -U sirrchat -d sirrchatdb
 
 # Test MySQL connection
-mysql -h localhost -u mailchat -p mailchatdb
+mysql -h localhost -u sirrchat -p sirrchatdb
 
 # Check SQLite file permissions
-ls -la $MAILCHAT_HOME/imapsql.db
+ls -la $SIRRCHAT_HOME/imapsql.db
 ```
 
 #### 3. 权限问题
 
 ```bash
-# Fix MAILCHAT_HOME permissions
-chmod -R 755 $MAILCHAT_HOME
-chown -R $USER:$USER $MAILCHAT_HOME
+# Fix SIRRCHAT_HOME permissions
+chmod -R 755 $SIRRCHAT_HOME
+chown -R $USER:$USER $SIRRCHAT_HOME
 ```
 
 #### 4. 依赖下载失败
@@ -590,10 +614,10 @@ go mod download
 
 ```bash
 # Run with verbose logging
-./build/mailchatd run --debug --log-level=debug
+./build/sirrchatd run --debug --log-level=debug
 
 # Enable stack traces
-./build/mailchatd run --debug --enable-trace
+./build/sirrchatd run --debug --enable-trace
 ```
 
 ---
@@ -612,12 +636,12 @@ go mod download
 
 ```bash
 # Show all available commands
-./build/mailchatd --help
+./build/sirrchatd --help
 
 # Show command-specific help
-./build/mailchatd run --help
-./build/mailchatd dns --help
-./build/mailchatd creds --help
+./build/sirrchatd run --help
+./build/sirrchatd dns --help
+./build/sirrchatd creds --help
 ```
 
 ### 问题反馈
@@ -636,10 +660,10 @@ go mod download
 
 ```bash
 # 1. Check binary version
-./build/mailchatd version
+./build/sirrchatd version
 
 # 2. Verify configuration
-./build/mailchatd config verify
+./build/sirrchatd config verify
 
 # 3. Test SMTP connection
 telnet localhost 25
@@ -651,7 +675,7 @@ telnet localhost 143
 curl http://localhost:9090/metrics
 ```
 
-如果所有测试通过，说明项目已成功搭建！
+如果所有测试通过，说明你的 SirrChat 节点已成功搭建并运行！现在你拥有了一个完全属于自己的去中心化通讯节点。
 
 ---
 
