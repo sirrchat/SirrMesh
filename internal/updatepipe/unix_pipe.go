@@ -26,7 +26,7 @@ import (
 	"os"
 
 	mess "github.com/foxcpp/go-imap-mess"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/log"
 )
 
 // UnixSockPipe implements the UpdatePipe interface by serializating updates

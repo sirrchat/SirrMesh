@@ -24,9 +24,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/exterrors"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/exterrors"
+	"github.com/sirrchat/SirrMesh/framework/module"
 )
 
 // FailAction specifies actions that messages pipeline should take based on the

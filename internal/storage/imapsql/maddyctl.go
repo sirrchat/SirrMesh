@@ -23,7 +23,7 @@ import (
 )
 
 // These methods wrap corresponding go-imap-sql methods, but also apply
-// mailcoin-specific credentials rules.
+// sirrmesh-specific credentials rules.
 
 func (store *Storage) ListIMAPAccts() ([]string, error) {
 	return store.Back.ListUsers()

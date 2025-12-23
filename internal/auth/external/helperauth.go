@@ -23,7 +23,7 @@ import (
 	"io"
 	"os/exec"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/sirrchat/SirrMesh/framework/module"
 )
 
 func AuthUsingHelper(binaryPath, accountName, password string) error {

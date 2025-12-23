@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/address"
+	"github.com/sirrchat/SirrMesh/framework/address"
 )
 
 func TestValidMailboxName(t *testing.T) {
@@ -18,13 +18,13 @@ func TestValidDomain(t *testing.T) {
 		Domain string
 		Valid  bool
 	}{
-		{Domain: "mailcoin.email", Valid: true},
+		{Domain: "sirrmesh.email", Valid: true},
 		{Domain: "", Valid: false},
-		{Domain: "mailcoin.email.", Valid: true},
+		{Domain: "sirrmesh.email.", Valid: true},
 		{Domain: "..", Valid: false},
 		{Domain: strings.Repeat("a", 256), Valid: false},
-		{Domain: "äõäoaõoäaõaäõaoäaoaäõoaäooaoaoiuaiauäõiuüõaõäiauõaaa.tld", Valid: true},            // https://mailcoin/issues/554
-		{Domain: "xn--oaoaaaoaoaoaooaoaoiuaiauiuaiauaaa-f1cadccdcmd01eddchqcbe07a.tld", Valid: true}, // https://mailcoin/issues/554
+		{Domain: "äõäoaõoäaõaäõaoäaoaäõoaäooaoaoiuaiauäõiuüõaõäiauõaaa.tld", Valid: true},
+		{Domain: "xn--oaoaaaoaoaoaooaoaoiuaiauiuaiauaaa-f1cadccdcmd01eddchqcbe07a.tld", Valid: true},
 	} {
 		if actual := address.ValidDomain(c.Domain); actual != c.Valid {
 			t.Errorf("expected domain %v to be valid=%v, but got %v", c.Domain, c.Valid, actual)

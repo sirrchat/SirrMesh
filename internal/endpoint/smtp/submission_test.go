@@ -25,7 +25,7 @@ import (
 
 	"github.com/emersion/go-message/textproto"
 	"github.com/emersion/go-smtp"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/sirrchat/SirrMesh/framework/module"
 )
 
 func init() {

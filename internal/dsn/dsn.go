@@ -31,8 +31,8 @@ import (
 
 	"github.com/emersion/go-message/textproto"
 	"github.com/emersion/go-smtp"
-	"github.com/mail-chat-chain/sirrmeshd/framework/address"
-	"github.com/mail-chat-chain/sirrmeshd/framework/dns"
+	"github.com/sirrchat/SirrMesh/framework/address"
+	"github.com/sirrchat/SirrMesh/framework/dns"
 )
 
 type ReportingMTAInfo struct {

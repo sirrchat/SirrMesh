@@ -21,7 +21,7 @@ package config
 import (
 	"fmt"
 
-	parser "github.com/mail-chat-chain/sirrmeshd/framework/cfgparser"
+	parser "github.com/sirrchat/SirrMesh/framework/cfgparser"
 )
 
 type (

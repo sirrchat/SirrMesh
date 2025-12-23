@@ -6,9 +6,9 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/module"
 	"github.com/minio/minio-go/v7"
 	"github.com/minio/minio-go/v7/pkg/credentials"
 )

@@ -24,8 +24,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/log"
 )
 
 func TLSClientBlock(_ *config.Map, node config.Node) (interface{}, error) {

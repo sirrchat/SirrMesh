@@ -3,7 +3,7 @@ package authz
 import (
 	"strings"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/address"
+	"github.com/sirrchat/SirrMesh/framework/address"
 	"golang.org/x/text/secure/precis"
 )
 

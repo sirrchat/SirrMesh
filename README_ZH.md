@@ -295,8 +295,8 @@ make lint
 
 ## 链接
 
-- **官网**: https://mailcoin.org
-- **文档**: https://docs.mailcoin.org
+- **官网**: https://sirr.chat
+- **文档**: https://docs.sirr.chat
 
 ## 支持
 

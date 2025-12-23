@@ -21,7 +21,7 @@ package msgpipeline
 import (
 	"fmt"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/sirrchat/SirrMesh/framework/module"
 )
 
 // objectName returns a new that is usable to identify the used external

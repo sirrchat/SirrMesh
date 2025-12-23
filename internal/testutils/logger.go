@@ -25,12 +25,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/log"
 )
 
 var (
-	debugLog  = flag.Bool("test.debuglog", false, "(mailcoin) Turn on debug log messages")
-	directLog = flag.Bool("test.directlog", false, "(mailcoin) Log to stderr instead of test log")
+	debugLog  = flag.Bool("test.debuglog", false, "(sirrmesh) Turn on debug log messages")
+	directLog = flag.Bool("test.directlog", false, "(sirrmesh) Log to stderr instead of test log")
 )
 
 func Logger(t *testing.T, name string) log.Logger {

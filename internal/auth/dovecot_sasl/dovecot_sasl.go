@@ -24,11 +24,11 @@ import (
 
 	"github.com/emersion/go-sasl"
 	dovecotsasl "github.com/foxcpp/go-dovecot-sasl"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/exterrors"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/auth"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/exterrors"
+	"github.com/sirrchat/SirrMesh/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/auth"
 )
 
 type Auth struct {

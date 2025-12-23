@@ -23,8 +23,8 @@ import (
 	"net"
 	"testing"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/testutils"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/testutils"
 )
 
 type mockAuth struct {

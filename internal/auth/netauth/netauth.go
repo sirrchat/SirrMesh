@@ -5,9 +5,9 @@ import (
 	"fmt"
 
 	"github.com/hashicorp/go-hclog"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/module"
 	"github.com/netauth/netauth/pkg/netauth"
 )
 
@@ -46,7 +46,7 @@ func (a *Auth) Init(cfg *config.Map) error {
 		return err
 	}
 	a.nacl = n
-	a.nacl.SetServiceName("mailcoin")
+	a.nacl.SetServiceName("sirrmesh")
 	cfg.String("require_group", false, false, "", &a.mustGroup)
 	cfg.Bool("debug", true, false, &a.log.Debug)
 	if _, err := cfg.Process(); err != nil {

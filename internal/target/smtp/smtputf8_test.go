@@ -21,8 +21,8 @@ package smtp_downstream
 import (
 	"testing"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/internal/testutils"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/internal/testutils"
 )
 
 func TestDownstreamDelivery_EHLO_ALabel(t *testing.T) {

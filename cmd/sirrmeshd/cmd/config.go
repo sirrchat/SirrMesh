@@ -28,8 +28,8 @@ import (
 
 	"golang.org/x/term"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/log"
 )
 
 /*
@@ -215,7 +215,7 @@ table.chain local_rewrites {
     optional_step static {
         entry postmaster postmaster@$(primary_domain)
     }
-    optional_step file ~/.mailcoin/aliases
+    optional_step file ~/.sirrmeshd/aliases
 }
 
 msgpipeline local_routing {

@@ -26,7 +26,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/log"
 )
 
 func handleSignals() os.Signal {

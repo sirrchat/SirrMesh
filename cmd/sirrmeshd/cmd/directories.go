@@ -6,7 +6,7 @@ package cmd
 import (
 	"os"
 
-	evmdconfig "github.com/mail-chat-chain/sirrmeshd/config"
+	evmdconfig "github.com/sirrchat/SirrMesh/config"
 )
 
 var (

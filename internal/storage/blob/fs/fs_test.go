@@ -4,9 +4,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/storage/blob"
-	"github.com/mail-chat-chain/sirrmeshd/internal/testutils"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/storage/blob"
+	"github.com/sirrchat/SirrMesh/internal/testutils"
 )
 
 func TestFS(t *testing.T) {

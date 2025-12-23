@@ -23,7 +23,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/mail-chat-chain/sirrmeshd/internal/auth/pass_table"
+	"github.com/sirrchat/SirrMesh/internal/auth/pass_table"
 	"github.com/spf13/cobra"
 	"golang.org/x/crypto/bcrypt"
 )

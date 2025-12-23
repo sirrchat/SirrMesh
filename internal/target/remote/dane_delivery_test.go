@@ -25,9 +25,9 @@ import (
 	"testing"
 
 	"github.com/foxcpp/go-mockdns"
-	"github.com/mail-chat-chain/sirrmeshd/framework/dns"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/testutils"
+	"github.com/sirrchat/SirrMesh/framework/dns"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/testutils"
 	miekgdns "github.com/miekg/dns"
 )
 

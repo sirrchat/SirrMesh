@@ -22,9 +22,9 @@ import (
 	"context"
 
 	"github.com/emersion/go-message/textproto"
-	"github.com/mail-chat-chain/sirrmeshd/framework/buffer"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/sirrchat/SirrMesh/framework/buffer"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/module"
 )
 
 type Modifier struct {

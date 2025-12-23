@@ -21,9 +21,9 @@ package table
 import (
 	"context"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/address"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/sirrchat/SirrMesh/framework/address"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/module"
 )
 
 type EmailLocalpart struct {

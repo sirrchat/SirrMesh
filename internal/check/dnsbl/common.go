@@ -24,8 +24,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/dns"
-	"github.com/mail-chat-chain/sirrmeshd/framework/exterrors"
+	"github.com/sirrchat/SirrMesh/framework/dns"
+	"github.com/sirrchat/SirrMesh/framework/exterrors"
 )
 
 type ListedErr struct {

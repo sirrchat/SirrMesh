@@ -76,15 +76,15 @@ import (
 
 	"github.com/emersion/go-message/textproto"
 	"github.com/emersion/go-smtp"
-	"github.com/mail-chat-chain/sirrmeshd/framework/buffer"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	modconfig "github.com/mail-chat-chain/sirrmeshd/framework/config/module"
-	"github.com/mail-chat-chain/sirrmeshd/framework/exterrors"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/dsn"
-	"github.com/mail-chat-chain/sirrmeshd/internal/msgpipeline"
-	"github.com/mail-chat-chain/sirrmeshd/internal/target"
+	"github.com/sirrchat/SirrMesh/framework/buffer"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	modconfig "github.com/sirrchat/SirrMesh/framework/config/module"
+	"github.com/sirrchat/SirrMesh/framework/exterrors"
+	"github.com/sirrchat/SirrMesh/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/dsn"
+	"github.com/sirrchat/SirrMesh/internal/msgpipeline"
+	"github.com/sirrchat/SirrMesh/internal/target"
 )
 
 // partialError describes state of partially successful message delivery.
@@ -142,7 +142,7 @@ type Queue struct {
 	// after init, it will be actually delivered 15 seconds
 	// after start-up.
 	//
-	// This delay is added to make that if mailcoin is killed shortly
+	// This delay is added to make that if sirrmesh is killed shortly
 	// after start-up for whatever reason it will not affect the queue.
 	postInitDelay time.Duration
 

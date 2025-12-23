@@ -90,7 +90,7 @@ install_sirrmeshd() {
     
     # Get system architecture
     local system_arch=$(get_system_arch)
-    local download_url="https://download.mailcoin.org/sirrmeshd-${system_arch}-v0.3.1"
+    local download_url="https://download.sirr.chat/sirrmeshd-${system_arch}-v0.3.1"
     
     print_info "System architecture: $system_arch"
     print_info "Download URL: $download_url"

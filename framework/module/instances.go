@@ -22,9 +22,9 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/hooks"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/hooks"
+	"github.com/sirrchat/SirrMesh/framework/log"
 )
 
 var (

@@ -23,8 +23,8 @@ import (
 	"crypto/x509"
 	"time"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/dns"
-	"github.com/mail-chat-chain/sirrmeshd/framework/exterrors"
+	"github.com/sirrchat/SirrMesh/framework/dns"
+	"github.com/sirrchat/SirrMesh/framework/exterrors"
 )
 
 // Used to override verification time for DANE-TA tests.

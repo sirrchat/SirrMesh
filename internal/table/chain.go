@@ -21,9 +21,9 @@ package table
 import (
 	"context"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	modconfig "github.com/mail-chat-chain/sirrmeshd/framework/config/module"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	modconfig "github.com/sirrchat/SirrMesh/framework/config/module"
+	"github.com/sirrchat/SirrMesh/framework/module"
 )
 
 type Chain struct {

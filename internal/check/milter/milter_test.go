@@ -21,7 +21,7 @@ package milter
 import (
 	"testing"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/config"
 )
 
 func TestAcceptValidEndpoints(t *testing.T) {

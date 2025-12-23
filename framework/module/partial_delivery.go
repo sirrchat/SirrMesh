@@ -22,7 +22,7 @@ import (
 	"context"
 
 	"github.com/emersion/go-message/textproto"
-	"github.com/mail-chat-chain/sirrmeshd/framework/buffer"
+	"github.com/sirrchat/SirrMesh/framework/buffer"
 )
 
 // StatusCollector is an object that is passed by message source

@@ -24,11 +24,11 @@ import (
 	"io"
 	"os"
 
-	parser "github.com/mail-chat-chain/sirrmeshd/framework/cfgparser"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/hooks"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/updatepipe"
+	parser "github.com/sirrchat/SirrMesh/framework/cfgparser"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/hooks"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/updatepipe"
 	"github.com/spf13/cobra"
 )
 

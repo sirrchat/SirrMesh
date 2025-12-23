@@ -24,15 +24,15 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/internal/testutils"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/internal/testutils"
 )
 
 func TestReadFile(t *testing.T) {
 	test := func(file string, expected map[string][]string) {
 		t.Helper()
 
-		f, err := os.CreateTemp("", "mailcoin-tests-")
+		f, err := os.CreateTemp("", "sirrmesh-tests-")
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -87,7 +87,7 @@ func TestFileReload(t *testing.T) {
 
 	const file = `cat: dog`
 
-	f, err := os.CreateTemp("", "mailcoin-tests-")
+	f, err := os.CreateTemp("", "sirrmesh-tests-")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -138,7 +138,7 @@ func TestFileReload_Broken(t *testing.T) {
 
 	const file = `cat: dog`
 
-	f, err := os.CreateTemp("", "mailcoin-tests-")
+	f, err := os.CreateTemp("", "sirrmesh-tests-")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -184,7 +184,7 @@ func TestFileReload_Removed(t *testing.T) {
 
 	const file = `cat: dog`
 
-	f, err := os.CreateTemp("", "mailcoin-tests-")
+	f, err := os.CreateTemp("", "sirrmesh-tests-")
 	if err != nil {
 		t.Fatal(err)
 	}

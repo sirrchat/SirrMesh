@@ -25,12 +25,12 @@ import (
 	"net"
 
 	"github.com/emersion/go-sasl"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	modconfig "github.com/mail-chat-chain/sirrmeshd/framework/config/module"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/auth/sasllogin"
-	"github.com/mail-chat-chain/sirrmeshd/internal/authz"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	modconfig "github.com/sirrchat/SirrMesh/framework/config/module"
+	"github.com/sirrchat/SirrMesh/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/auth/sasllogin"
+	"github.com/sirrchat/SirrMesh/internal/authz"
 )
 
 var (
@@ -39,7 +39,7 @@ var (
 )
 
 // SASLAuth is a wrapper that initializes sasl.Server using authenticators that
-// call mailcoin module objects.
+// call sirrmesh module objects.
 //
 // It also handles username translation using auth_map and auth_map_normalize
 // (AuthMap and AuthMapNormalize should be set).

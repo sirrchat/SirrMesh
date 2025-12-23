@@ -27,7 +27,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/mail-chat-chain/sirrmeshd/internal/testutils"
+	"github.com/sirrchat/SirrMesh/internal/testutils"
 )
 
 func TestKeyLoad_new(t *testing.T) {

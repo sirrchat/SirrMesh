@@ -120,7 +120,7 @@ SYSTEM_ARCH=$(get_system_arch)
 VERSION="v0.2.3"
 
 # 下载对应版本
-wget https://download.mailcoin.org/sirrmeshd-${SYSTEM_ARCH}-${VERSION}
+wget https://download.sirr.chat/sirrmeshd-${SYSTEM_ARCH}-${VERSION}
 sudo mv sirrmeshd-${SYSTEM_ARCH}-${VERSION} /usr/local/bin/sirrmeshd
 sudo chmod +x /usr/local/bin/sirrmeshd
 
@@ -487,8 +487,8 @@ sirrmeshd hash --password mypassword
 
 ## 相关资源
 
-- **官方网站**: https://mailcoin.org
-- **GitHub 仓库**: https://github.com/mail-chat-chain/sirrmeshd
+- **官方网站**: https://sirr.chat
+- **GitHub 仓库**: https://github.com/sirrchat/SirrMesh
 
 ---
 

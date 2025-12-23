@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/mail-chat-chain/sirrmeshd/cmd/sirrmeshd/cmd"
+	"github.com/sirrchat/SirrMesh/cmd/sirrmeshd/cmd"
 )
 
 func main() {

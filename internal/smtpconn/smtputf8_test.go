@@ -25,9 +25,9 @@ import (
 
 	"github.com/emersion/go-message/textproto"
 	"github.com/emersion/go-smtp"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/exterrors"
-	"github.com/mail-chat-chain/sirrmeshd/internal/testutils"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/exterrors"
+	"github.com/sirrchat/SirrMesh/internal/testutils"
 )
 
 func doTestDelivery(t *testing.T, conn *C, from string, to []string, opts smtp.MailOptions) error {

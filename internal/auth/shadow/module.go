@@ -27,10 +27,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/auth/external"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/auth/external"
 )
 
 type Auth struct {
@@ -67,15 +67,15 @@ func (a *Auth) Init(cfg *config.Map) error {
 	}
 
 	if a.useHelper {
-		a.helperPath = filepath.Join(config.LibexecDirectory, "mailcoin-shadow-helper")
+		a.helperPath = filepath.Join(config.LibexecDirectory, "sirrmesh-shadow-helper")
 		if _, err := os.Stat(a.helperPath); err != nil {
-			return fmt.Errorf("shadow: no helper binary (mailcoin-shadow-helper) found in %s", config.LibexecDirectory)
+			return fmt.Errorf("shadow: no helper binary (sirrmesh-shadow-helper) found in %s", config.LibexecDirectory)
 		}
 	} else {
 		f, err := os.Open("/etc/shadow")
 		if err != nil {
 			if os.IsPermission(err) {
-				return fmt.Errorf("shadow: can't read /etc/shadow due to permission error, use helper binary or run mailcoin as a privileged user")
+				return fmt.Errorf("shadow: can't read /etc/shadow due to permission error, use helper binary or run sirrmesh as a privileged user")
 			}
 			return fmt.Errorf("shadow: can't read /etc/shadow: %v", err)
 		}

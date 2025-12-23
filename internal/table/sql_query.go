@@ -25,8 +25,8 @@ import (
 	"strings"
 
 	_ "github.com/lib/pq"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/module"
 )
 
 type SQL struct {

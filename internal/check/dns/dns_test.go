@@ -23,10 +23,10 @@ import (
 	"testing"
 
 	"github.com/foxcpp/go-mockdns"
-	"github.com/mail-chat-chain/sirrmeshd/framework/future"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/check"
-	"github.com/mail-chat-chain/sirrmeshd/internal/testutils"
+	"github.com/sirrchat/SirrMesh/framework/future"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/check"
+	"github.com/sirrchat/SirrMesh/internal/testutils"
 )
 
 func TestRequireMatchingRDNS(t *testing.T) {

@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/address"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/sirrchat/SirrMesh/framework/address"
+	"github.com/sirrchat/SirrMesh/framework/module"
 )
 
 func AuthorizeEmailUse(ctx context.Context, username string, addrs []string, mapping module.Table) (bool, error) {

@@ -27,12 +27,12 @@ import (
 
 	"github.com/emersion/go-sasl"
 	dovecotsasl "github.com/foxcpp/go-dovecot-sasl"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	modconfig "github.com/mail-chat-chain/sirrmeshd/framework/config/module"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/auth"
-	"github.com/mail-chat-chain/sirrmeshd/internal/authz"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	modconfig "github.com/sirrchat/SirrMesh/framework/config/module"
+	"github.com/sirrchat/SirrMesh/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/auth"
+	"github.com/sirrchat/SirrMesh/internal/authz"
 )
 
 const modName = "dovecot_sasld"

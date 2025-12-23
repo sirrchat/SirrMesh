@@ -23,13 +23,13 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/address"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	modconfig "github.com/mail-chat-chain/sirrmeshd/framework/config/module"
-	"github.com/mail-chat-chain/sirrmeshd/framework/dns"
-	"github.com/mail-chat-chain/sirrmeshd/framework/exterrors"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/modify"
+	"github.com/sirrchat/SirrMesh/framework/address"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	modconfig "github.com/sirrchat/SirrMesh/framework/config/module"
+	"github.com/sirrchat/SirrMesh/framework/dns"
+	"github.com/sirrchat/SirrMesh/framework/exterrors"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/modify"
 )
 
 type sourceIn struct {

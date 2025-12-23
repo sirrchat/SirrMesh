@@ -1,4 +1,4 @@
-module github.com/mail-chat-chain/sirrmeshd
+module github.com/sirrchat/SirrMesh
 
 go 1.24
 

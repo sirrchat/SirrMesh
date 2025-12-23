@@ -6,9 +6,9 @@ import (
 
 	"github.com/johannesboyne/gofakes3"
 	"github.com/johannesboyne/gofakes3/backend/s3mem"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/storage/blob"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/storage/blob"
 )
 
 func TestFS(t *testing.T) {
@@ -23,7 +23,7 @@ func TestFS(t *testing.T) {
 		faker = gofakes3.New(backend)
 		ts = httptest.NewServer(faker.Server())
 
-		if err := backend.CreateBucket("mailcoin-test"); err != nil {
+		if err := backend.CreateBucket("sirrmesh-test"); err != nil {
 			panic(err)
 		}
 
@@ -48,7 +48,7 @@ func TestFS(t *testing.T) {
 				},
 				{
 					Name: "bucket",
-					Args: []string{"mailcoin-test"},
+					Args: []string{"sirrmesh-test"},
 				},
 			},
 		}))

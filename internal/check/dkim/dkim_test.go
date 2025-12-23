@@ -26,11 +26,11 @@ import (
 
 	"github.com/emersion/go-msgauth/authres"
 	"github.com/foxcpp/go-mockdns"
-	"github.com/mail-chat-chain/sirrmeshd/framework/buffer"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/exterrors"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/testutils"
+	"github.com/sirrchat/SirrMesh/framework/buffer"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/exterrors"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/testutils"
 )
 
 const unsignedMailString = `From: Joe SixPack <joe@football.example.com>

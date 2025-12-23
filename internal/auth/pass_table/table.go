@@ -23,9 +23,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	modconfig "github.com/mail-chat-chain/sirrmeshd/framework/config/module"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	modconfig "github.com/sirrchat/SirrMesh/framework/config/module"
+	"github.com/sirrchat/SirrMesh/framework/module"
 	"golang.org/x/crypto/bcrypt"
 	"golang.org/x/text/secure/precis"
 )

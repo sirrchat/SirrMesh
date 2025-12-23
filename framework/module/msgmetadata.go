@@ -26,7 +26,7 @@ import (
 	"net"
 
 	"github.com/emersion/go-smtp"
-	"github.com/mail-chat-chain/sirrmeshd/framework/future"
+	"github.com/sirrchat/SirrMesh/framework/future"
 )
 
 // ConnState structure holds the state information of the protocol used to

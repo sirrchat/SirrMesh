@@ -29,8 +29,8 @@ import (
 	"net"
 	"time"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/module"
 )
 
 type SelfSignedLoader struct {

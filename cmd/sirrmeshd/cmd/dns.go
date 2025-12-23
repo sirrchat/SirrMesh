@@ -16,8 +16,8 @@ import (
 	"strings"
 	"time"
 
-	parser "github.com/mail-chat-chain/sirrmeshd/framework/cfgparser"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	parser "github.com/sirrchat/SirrMesh/framework/cfgparser"
+	"github.com/sirrchat/SirrMesh/framework/log"
 	"github.com/spf13/cobra"
 )
 

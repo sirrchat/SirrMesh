@@ -27,13 +27,13 @@ import (
 	"time"
 
 	"github.com/foxcpp/go-mtasts"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/dns"
-	"github.com/mail-chat-chain/sirrmeshd/framework/exterrors"
-	"github.com/mail-chat-chain/sirrmeshd/framework/future"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/target"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/dns"
+	"github.com/sirrchat/SirrMesh/framework/exterrors"
+	"github.com/sirrchat/SirrMesh/framework/future"
+	"github.com/sirrchat/SirrMesh/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/target"
 )
 
 type (
@@ -420,7 +420,7 @@ func (c *daneDelivery) discoverTLSA(ctx context.Context, mx string) ([]dns.TLSA,
 		// If A lookup is not DNSSEC-authenticated we assume the server cannot
 		// have TLSA record and skip trying to actually lookup TLSA
 		// to avoid hitting weird errors like SERVFAIL, NOTIMP
-		// e.g. see https://mailcoin/issues/287
+		// e.g. see https://sirrmesh/issues/287
 		if rname == mx {
 			c.c.log.Debugln("skipping DANE for", mx, "due to non-authenticated A records")
 			return nil, nil

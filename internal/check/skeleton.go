@@ -30,11 +30,11 @@ import (
 	"context"
 
 	"github.com/emersion/go-message/textproto"
-	"github.com/mail-chat-chain/sirrmeshd/framework/buffer"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/target"
+	"github.com/sirrchat/SirrMesh/framework/buffer"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/target"
 )
 
 const modName = "check_things"

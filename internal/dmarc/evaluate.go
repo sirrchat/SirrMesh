@@ -29,8 +29,8 @@ import (
 	"github.com/emersion/go-message/textproto"
 	"github.com/emersion/go-msgauth/authres"
 	"github.com/emersion/go-msgauth/dmarc"
-	"github.com/mail-chat-chain/sirrmeshd/framework/address"
-	"github.com/mail-chat-chain/sirrmeshd/framework/dns"
+	"github.com/sirrchat/SirrMesh/framework/address"
+	"github.com/sirrchat/SirrMesh/framework/dns"
 	"golang.org/x/net/publicsuffix"
 )
 

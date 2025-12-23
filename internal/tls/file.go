@@ -28,10 +28,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/hooks"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/hooks"
+	"github.com/sirrchat/SirrMesh/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/module"
 )
 
 type FileLoader struct {
@@ -77,12 +77,12 @@ func (f *FileLoader) Init(cfg *config.Map) error {
 		if strings.HasPrefix(f.inlineArgs[i], "/") {
 			f.certPaths = append(f.certPaths, f.inlineArgs[i])
 		} else {
-			f.certPaths = append(f.certPaths, filepath.Join(os.Getenv("MAILCOIN_WORK_DIR"), f.inlineArgs[i]))
+			f.certPaths = append(f.certPaths, filepath.Join(os.Getenv("SIRRMESH_WORK_DIR"), f.inlineArgs[i]))
 		}
 		if strings.HasPrefix(f.inlineArgs[i+1], "/") {
 			f.keyPaths = append(f.keyPaths, f.inlineArgs[i+1])
 		} else {
-			f.keyPaths = append(f.keyPaths, filepath.Join(os.Getenv("MAILCOIN_WORK_DIR"), f.inlineArgs[i+1]))
+			f.keyPaths = append(f.keyPaths, filepath.Join(os.Getenv("SIRRMESH_WORK_DIR"), f.inlineArgs[i+1]))
 		}
 	}
 

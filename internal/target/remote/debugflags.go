@@ -21,7 +21,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 package remote
 
-// mailchatcli "github.com/mail-chat-chain/sirrmeshd/internal/cli" // Removed - now using Cosmos SDK CLI
+// mailchatcli "github.com/sirrchat/SirrMesh/internal/cli" // Removed - now using Cosmos SDK CLI
 
 func init() {
 	// Note: Debug flags were previously added via mailchatcli.AddGlobalFlag

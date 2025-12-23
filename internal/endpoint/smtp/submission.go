@@ -26,8 +26,8 @@ import (
 
 	"github.com/emersion/go-message/textproto"
 	"github.com/google/uuid"
-	"github.com/mail-chat-chain/sirrmeshd/framework/exterrors"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/sirrchat/SirrMesh/framework/exterrors"
+	"github.com/sirrchat/SirrMesh/framework/module"
 )
 
 var (

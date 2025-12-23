@@ -22,7 +22,7 @@ import (
 	"context"
 
 	"github.com/emersion/go-message/textproto"
-	"github.com/mail-chat-chain/sirrmeshd/framework/buffer"
+	"github.com/sirrchat/SirrMesh/framework/buffer"
 )
 
 // Modifier is the module interface for modules that can mutate the

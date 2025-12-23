@@ -21,8 +21,8 @@ package pass_table
 import (
 	"testing"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/internal/testutils"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/internal/testutils"
 )
 
 func TestAuth_AuthPlain(t *testing.T) {

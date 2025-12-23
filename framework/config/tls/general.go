@@ -21,8 +21,8 @@ package tls
 import (
 	"crypto/tls"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/log"
 )
 
 var strVersionsMap = map[string]uint16{

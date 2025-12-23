@@ -24,10 +24,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/auth/external"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/auth/external"
 )
 
 type Auth struct {
@@ -67,9 +67,9 @@ func (a *Auth) Init(cfg *config.Map) error {
 	}
 
 	if a.useHelper {
-		a.helperPath = filepath.Join(config.LibexecDirectory, "mailcoin-pam-helper")
+		a.helperPath = filepath.Join(config.LibexecDirectory, "sirrmesh-pam-helper")
 		if _, err := os.Stat(a.helperPath); err != nil {
-			return fmt.Errorf("pam: no helper binary (mailcoin-pam-helper) found in %s", config.LibexecDirectory)
+			return fmt.Errorf("pam: no helper binary (sirrmesh-pam-helper) found in %s", config.LibexecDirectory)
 		}
 	}
 

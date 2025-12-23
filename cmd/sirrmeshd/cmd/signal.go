@@ -26,8 +26,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/hooks"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/hooks"
+	"github.com/sirrchat/SirrMesh/framework/log"
 )
 
 // handleSignals function creates and listens on OS signals channel.

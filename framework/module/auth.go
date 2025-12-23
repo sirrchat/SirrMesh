@@ -33,7 +33,7 @@ type PlainAuth interface {
 	AuthPlain(username, password string) error
 }
 
-// PlainUserDB is a local credentials store that can be managed using mailcoin command
+// PlainUserDB is a local credentials store that can be managed using sirrmeshd command
 // utility.
 type PlainUserDB interface {
 	PlainAuth

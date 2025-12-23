@@ -30,10 +30,10 @@ import (
 	"github.com/emersion/go-message/textproto"
 	"github.com/emersion/go-msgauth/dkim"
 	"github.com/foxcpp/go-mockdns"
-	"github.com/mail-chat-chain/sirrmeshd/framework/buffer"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/testutils"
+	"github.com/sirrchat/SirrMesh/framework/buffer"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/testutils"
 )
 
 func newTestModifier(t *testing.T, dir, keyAlgo string, domains []string) *Modifier {
@@ -178,47 +178,47 @@ func TestGenerateSignVerify(t *testing.T) {
 	for _, algo := range [2]string{"rsa2048", "ed25519"} {
 		for _, hdrCanon := range [2]dkim.Canonicalization{dkim.CanonicalizationSimple, dkim.CanonicalizationRelaxed} {
 			for _, bodyCanon := range [2]dkim.Canonicalization{dkim.CanonicalizationSimple, dkim.CanonicalizationRelaxed} {
-				test([]string{"mailcoin.test"}, "test@mailcoin.test", []string{"mailcoin.test"}, algo, hdrCanon, bodyCanon, false)
-				test([]string{"mailcoin.test"}, "test@mailcoin.test", []string{"mailcoin.test"}, algo, hdrCanon, bodyCanon, true)
+				test([]string{"sirrmesh.test"}, "test@sirrmesh.test", []string{"sirrmesh.test"}, algo, hdrCanon, bodyCanon, false)
+				test([]string{"sirrmesh.test"}, "test@sirrmesh.test", []string{"sirrmesh.test"}, algo, hdrCanon, bodyCanon, true)
 			}
 		}
 	}
 
 	// Key selection tests
 	test(
-		[]string{"mailcoin.test"}, // Generated keys.
-		"test@mailcoin.test",      // Envelope sender.
-		[]string{"mailcoin.test"}, // Expected signature domains.
+		[]string{"sirrmesh.test"}, // Generated keys.
+		"test@sirrmesh.test",      // Envelope sender.
+		[]string{"sirrmesh.test"}, // Expected signature domains.
 		"ed25519", dkim.CanonicalizationRelaxed, dkim.CanonicalizationRelaxed, false)
 	test(
-		[]string{"mailcoin.test"},
-		"test@unrelated.mailcoin.test",
+		[]string{"sirrmesh.test"},
+		"test@unrelated.sirrmesh.test",
 		[]string{},
 		"ed25519", dkim.CanonicalizationRelaxed, dkim.CanonicalizationRelaxed, false)
 	test(
-		[]string{"mailcoin.test", "related.mailcoin.test"},
-		"test@related.mailcoin.test",
-		[]string{"related.mailcoin.test"},
+		[]string{"sirrmesh.test", "related.sirrmesh.test"},
+		"test@related.sirrmesh.test",
+		[]string{"related.sirrmesh.test"},
 		"ed25519", dkim.CanonicalizationRelaxed, dkim.CanonicalizationRelaxed, false)
 	test(
-		[]string{"fallback.mailcoin.test", "mailcoin.test"},
+		[]string{"fallback.sirrmesh.test", "sirrmesh.test"},
 		"postmaster",
-		[]string{"fallback.mailcoin.test"},
+		[]string{"fallback.sirrmesh.test"},
 		"ed25519", dkim.CanonicalizationRelaxed, dkim.CanonicalizationRelaxed, false)
 	test(
-		[]string{"fallback.mailcoin.test", "mailcoin.test"},
+		[]string{"fallback.sirrmesh.test", "sirrmesh.test"},
 		"",
-		[]string{"fallback.mailcoin.test"},
+		[]string{"fallback.sirrmesh.test"},
 		"ed25519", dkim.CanonicalizationRelaxed, dkim.CanonicalizationRelaxed, false)
 	test(
-		[]string{"another.mailcoin.test", "another.mailcoin.test", "mailcoin.test"},
-		"test@another.mailcoin.test",
-		[]string{"another.mailcoin.test"},
+		[]string{"another.sirrmesh.test", "another.sirrmesh.test", "sirrmesh.test"},
+		"test@another.sirrmesh.test",
+		[]string{"another.sirrmesh.test"},
 		"ed25519", dkim.CanonicalizationRelaxed, dkim.CanonicalizationRelaxed, false)
 	test(
-		[]string{"another.mailcoin.test", "another.mailcoin.test", "mailcoin.test"},
+		[]string{"another.sirrmesh.test", "another.sirrmesh.test", "sirrmesh.test"},
 		"",
-		[]string{"another.mailcoin.test"},
+		[]string{"another.sirrmesh.test"},
 		"ed25519", dkim.CanonicalizationRelaxed, dkim.CanonicalizationRelaxed, false)
 }
 

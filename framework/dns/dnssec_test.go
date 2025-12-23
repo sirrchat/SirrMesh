@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/log"
 	"github.com/miekg/dns"
 )
 
@@ -157,7 +157,7 @@ func TestExtResolver_AuthLookupIPAddr(t *testing.T) {
 			ctx, cancel := context.WithCancel(context.Background())
 			defer cancel()
 
-			actualAd, actualAddrs, actualErr := res.AuthLookupIPAddr(ctx, "mailcoin.test")
+			actualAd, actualAddrs, actualErr := res.AuthLookupIPAddr(ctx, "sirrmesh.test")
 			if (actualErr != nil) != err {
 				t.Fatal("actualErr:", actualErr, "expectedErr:", err)
 			}

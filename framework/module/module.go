@@ -21,7 +21,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 // Interfaces are placed here to prevent circular dependencies.
 //
-// Each interface required by mailcoin for operation is provided by some object
+// Each interface required by sirrmesh for operation is provided by some object
 // called "module".  This includes authentication, storage backends, DKIM,
 // email filters, etc.  Each module may serve multiple functions. I.e. it can
 // be IMAP storage backend, SMTP downstream and authentication provider at the
@@ -34,10 +34,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 package module
 
 import (
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/config"
 )
 
-// Module is the interface implemented by all mailcoin module instances.
+// Module is the interface implemented by all sirr module instances.
 //
 // It defines basic methods used to identify instances.
 //

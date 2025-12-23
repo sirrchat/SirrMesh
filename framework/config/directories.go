@@ -32,7 +32,7 @@ var (
 	//
 	// It should be preferred over os.TempDir, which is
 	// global and world-readable on most systems, while
-	// RuntimeDirectory can be dedicated for mailcoin.
+	// RuntimeDirectory can be dedicated for sirrmesh.
 	//
 	// Value of this variable must not change after initialization
 	// in cmd/SirrMesh/main.go.

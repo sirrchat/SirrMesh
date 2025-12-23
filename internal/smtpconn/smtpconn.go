@@ -39,14 +39,14 @@ import (
 
 	"github.com/emersion/go-message/textproto"
 	"github.com/emersion/go-smtp"
-	"github.com/mail-chat-chain/sirrmeshd/framework/address"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/exterrors"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/address"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/exterrors"
+	"github.com/sirrchat/SirrMesh/framework/log"
 )
 
 // The C object represents the SMTP connection and is a wrapper around
-// go-smtp.Client with additional mailcoin-specific logic.
+// go-smtp.Client with additional sirrmesh-specific logic.
 //
 // Currently, the C object represents one session and cannot be reused.
 type C struct {

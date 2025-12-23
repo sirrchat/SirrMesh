@@ -26,7 +26,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/config/lexer"
+	"github.com/sirrchat/SirrMesh/framework/config/lexer"
 )
 
 // Node struct describes a parsed configurtion block or a simple directive.

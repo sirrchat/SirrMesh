@@ -32,14 +32,14 @@ import (
 	"github.com/emersion/go-smtp"
 	"github.com/foxcpp/go-mockdns"
 	"github.com/foxcpp/go-mtasts"
-	"github.com/mail-chat-chain/sirrmeshd/framework/buffer"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/dns"
-	"github.com/mail-chat-chain/sirrmeshd/framework/exterrors"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/limits"
-	"github.com/mail-chat-chain/sirrmeshd/internal/smtpconn/pool"
-	"github.com/mail-chat-chain/sirrmeshd/internal/testutils"
+	"github.com/sirrchat/SirrMesh/framework/buffer"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/dns"
+	"github.com/sirrchat/SirrMesh/framework/exterrors"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/limits"
+	"github.com/sirrchat/SirrMesh/internal/smtpconn/pool"
+	"github.com/sirrchat/SirrMesh/internal/testutils"
 )
 
 // .invalid TLD is used here to make sure if there is something wrong about
@@ -1015,7 +1015,7 @@ func TestRemoteDelivery_TLS_FallbackPlaintext(t *testing.T) {
 }
 
 func TestMain(m *testing.M) {
-	remoteSmtpPort := flag.String("test.smtpport", "random", "(mailcoin) SMTP port to use for connections in tests")
+	remoteSmtpPort := flag.String("test.smtpport", "random", "(sirrmesh) SMTP port to use for connections in tests")
 	flag.Parse()
 
 	if *remoteSmtpPort == "random" {

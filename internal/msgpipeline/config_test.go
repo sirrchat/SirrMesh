@@ -23,8 +23,8 @@ import (
 	"strings"
 	"testing"
 
-	parser "github.com/mail-chat-chain/sirrmeshd/framework/cfgparser"
-	"github.com/mail-chat-chain/sirrmeshd/framework/exterrors"
+	parser "github.com/sirrchat/SirrMesh/framework/cfgparser"
+	"github.com/sirrchat/SirrMesh/framework/exterrors"
 )
 
 func policyError(code int) error {

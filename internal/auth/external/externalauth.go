@@ -24,10 +24,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/auth"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/auth"
 )
 
 type ExternalAuth struct {
@@ -78,7 +78,7 @@ func (ea *ExternalAuth) Init(cfg *config.Map) error {
 	if ea.helperPath != "" {
 		ea.Log.Debugln("using helper:", ea.helperPath)
 	} else {
-		ea.helperPath = filepath.Join(config.LibexecDirectory, "mailcoin-auth-helper")
+		ea.helperPath = filepath.Join(config.LibexecDirectory, "sirrmesh-auth-helper")
 	}
 	if _, err := os.Stat(ea.helperPath); err != nil {
 		return fmt.Errorf("%s doesn't exist", ea.helperPath)

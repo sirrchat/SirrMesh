@@ -23,7 +23,7 @@ import (
 
 	"github.com/emersion/go-message/textproto"
 	"github.com/emersion/go-msgauth/authres"
-	"github.com/mail-chat-chain/sirrmeshd/framework/buffer"
+	"github.com/sirrchat/SirrMesh/framework/buffer"
 )
 
 // Check is the module interface that is meant for read-only (with the

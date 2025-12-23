@@ -25,7 +25,7 @@ import (
 	"time"
 
 	imapsql "github.com/foxcpp/go-imap-sql"
-	"github.com/mail-chat-chain/sirrmeshd/internal/testutils"
+	"github.com/sirrchat/SirrMesh/internal/testutils"
 )
 
 var (

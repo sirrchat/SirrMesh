@@ -23,7 +23,7 @@ import (
 	"runtime/debug"
 	"sync"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/log"
 )
 
 // The Future object implements a container for (value, error) pair that "will

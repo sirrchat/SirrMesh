@@ -32,11 +32,11 @@ import (
 	"reflect"
 	"strings"
 
-	parser "github.com/mail-chat-chain/sirrmeshd/framework/cfgparser"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/hooks"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	parser "github.com/sirrchat/SirrMesh/framework/cfgparser"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/hooks"
+	"github.com/sirrchat/SirrMesh/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/module"
 )
 
 // createInlineModule is a helper function for config matchers that can create inline modules.

@@ -24,7 +24,7 @@ import (
 	"testing"
 
 	"github.com/emersion/go-sasl"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/sirrchat/SirrMesh/framework/module"
 )
 
 type mockAuth struct {

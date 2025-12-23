@@ -21,12 +21,12 @@ package dns
 import (
 	"strings"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/address"
-	modconfig "github.com/mail-chat-chain/sirrmeshd/framework/config/module"
-	"github.com/mail-chat-chain/sirrmeshd/framework/dns"
-	"github.com/mail-chat-chain/sirrmeshd/framework/exterrors"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/check"
+	"github.com/sirrchat/SirrMesh/framework/address"
+	modconfig "github.com/sirrchat/SirrMesh/framework/config/module"
+	"github.com/sirrchat/SirrMesh/framework/dns"
+	"github.com/sirrchat/SirrMesh/framework/exterrors"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/check"
 )
 
 func requireMatchingRDNS(ctx check.StatelessCheckContext) module.CheckResult {

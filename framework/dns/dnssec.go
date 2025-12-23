@@ -25,7 +25,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/log"
 	"github.com/miekg/dns"
 )
 

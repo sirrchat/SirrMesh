@@ -41,14 +41,14 @@ import (
 	"github.com/emersion/go-imap/backend"
 	mess "github.com/foxcpp/go-imap-mess"
 	imapsql "github.com/foxcpp/go-imap-sql"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	modconfig "github.com/mail-chat-chain/sirrmeshd/framework/config/module"
-	"github.com/mail-chat-chain/sirrmeshd/framework/dns"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/authz"
-	"github.com/mail-chat-chain/sirrmeshd/internal/updatepipe"
-	"github.com/mail-chat-chain/sirrmeshd/internal/updatepipe/pubsub"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	modconfig "github.com/sirrchat/SirrMesh/framework/config/module"
+	"github.com/sirrchat/SirrMesh/framework/dns"
+	"github.com/sirrchat/SirrMesh/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/authz"
+	"github.com/sirrchat/SirrMesh/internal/updatepipe"
+	"github.com/sirrchat/SirrMesh/internal/updatepipe/pubsub"
 
 	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/lib/pq"
@@ -413,7 +413,7 @@ func (store *Storage) Close() error {
 
 	// Wait for 'updates replicate' goroutine to actually stop so we will send
 	// all updates before shutting down (this is especially important for
-	// mailcoin subcommands).
+	// sirrmesh subcommands).
 	if store.updPipe != nil {
 		close(store.outboundUpds)
 		<-store.updPushStop

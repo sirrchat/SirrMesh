@@ -23,7 +23,7 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/dns"
+	"github.com/sirrchat/SirrMesh/framework/dns"
 	"golang.org/x/net/idna"
 	"golang.org/x/text/secure/precis"
 	"golang.org/x/text/unicode/norm"

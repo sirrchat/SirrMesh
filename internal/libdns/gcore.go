@@ -7,8 +7,8 @@ import (
 	"fmt"
 
 	"github.com/libdns/gcore"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/module"
 )
 
 func init() {

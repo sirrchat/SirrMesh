@@ -295,8 +295,8 @@ This project is licensed under the GPL 3.0 License - see the [LICENSE](LICENSE) 
 
 ## Links
 
-- **Website**: https://mailcoin.org
-- **Documentation**: https://docs.mailcoin.org
+- **Website**: https://sirr.chat
+- **Documentation**: https://docs.sirr.chat
 
 ## Support
 

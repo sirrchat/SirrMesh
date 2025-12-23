@@ -21,7 +21,7 @@ package module
 import (
 	"sync"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/log"
 )
 
 var (

@@ -22,9 +22,9 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/modify"
-	"github.com/mail-chat-chain/sirrmeshd/internal/testutils"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/modify"
+	"github.com/sirrchat/SirrMesh/internal/testutils"
 )
 
 type multipleErrs map[string]error

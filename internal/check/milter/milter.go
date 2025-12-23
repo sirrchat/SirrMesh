@@ -28,12 +28,12 @@ import (
 
 	"github.com/emersion/go-message/textproto"
 	"github.com/emersion/go-milter"
-	"github.com/mail-chat-chain/sirrmeshd/framework/buffer"
-	"github.com/mail-chat-chain/sirrmeshd/framework/config"
-	"github.com/mail-chat-chain/sirrmeshd/framework/exterrors"
-	"github.com/mail-chat-chain/sirrmeshd/framework/log"
-	"github.com/mail-chat-chain/sirrmeshd/framework/module"
-	"github.com/mail-chat-chain/sirrmeshd/internal/target"
+	"github.com/sirrchat/SirrMesh/framework/buffer"
+	"github.com/sirrchat/SirrMesh/framework/config"
+	"github.com/sirrchat/SirrMesh/framework/exterrors"
+	"github.com/sirrchat/SirrMesh/framework/log"
+	"github.com/sirrchat/SirrMesh/framework/module"
+	"github.com/sirrchat/SirrMesh/internal/target"
 )
 
 const modName = "check.milter"
@@ -242,7 +242,7 @@ func (s *state) CheckConnection(ctx context.Context) module.CheckResult {
 
 	if !s.session.ProtocolOption(milter.OptNoConnect) {
 		if err := s.session.Macros(milter.CodeConn,
-			"daemon_name", "mailcoin",
+			"daemon_name", "sirrmesh",
 			"if_name", "unknown",
 			"if_addr", "0.0.0.0",
 			// TODO: $j

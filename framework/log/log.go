@@ -26,7 +26,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mail-chat-chain/sirrmeshd/framework/exterrors"
+	"github.com/sirrchat/SirrMesh/framework/exterrors"
 	"go.uber.org/zap"
 )
 
