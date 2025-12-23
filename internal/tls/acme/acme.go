@@ -7,11 +7,11 @@ import (
 	"path/filepath"
 
 	"github.com/caddyserver/certmagic"
-	"github.com/mail-chat-chain/mailchatd/framework/config"
-	modconfig "github.com/mail-chat-chain/mailchatd/framework/config/module"
-	"github.com/mail-chat-chain/mailchatd/framework/hooks"
-	"github.com/mail-chat-chain/mailchatd/framework/log"
-	"github.com/mail-chat-chain/mailchatd/framework/module"
+	"github.com/mail-chat-chain/sirrmeshd/framework/config"
+	modconfig "github.com/mail-chat-chain/sirrmeshd/framework/config/module"
+	"github.com/mail-chat-chain/sirrmeshd/framework/hooks"
+	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/mail-chat-chain/sirrmeshd/framework/module"
 )
 
 const modName = "tls.loader.acme"

@@ -6,9 +6,9 @@ import (
 	"strings"
 
 	"github.com/c0va23/go-proxyprotocol"
-	"github.com/mail-chat-chain/mailchatd/framework/config"
-	tls2 "github.com/mail-chat-chain/mailchatd/framework/config/tls"
-	"github.com/mail-chat-chain/mailchatd/framework/log"
+	"github.com/mail-chat-chain/sirrmeshd/framework/config"
+	tls2 "github.com/mail-chat-chain/sirrmeshd/framework/config/tls"
+	"github.com/mail-chat-chain/sirrmeshd/framework/log"
 )
 
 type ProxyProtocol struct {

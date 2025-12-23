@@ -11,10 +11,10 @@ import (
 	"time"
 
 	"github.com/go-ldap/ldap/v3"
-	"github.com/mail-chat-chain/mailchatd/framework/config"
-	tls2 "github.com/mail-chat-chain/mailchatd/framework/config/tls"
-	"github.com/mail-chat-chain/mailchatd/framework/log"
-	"github.com/mail-chat-chain/mailchatd/framework/module"
+	"github.com/mail-chat-chain/sirrmeshd/framework/config"
+	tls2 "github.com/mail-chat-chain/sirrmeshd/framework/config/tls"
+	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/mail-chat-chain/sirrmeshd/framework/module"
 )
 
 const modName = "auth.ldap"

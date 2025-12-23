@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/mail-chat-chain/mailchatd/framework/address"
-	"github.com/mail-chat-chain/mailchatd/framework/module"
+	"github.com/mail-chat-chain/sirrmeshd/framework/address"
+	"github.com/mail-chat-chain/sirrmeshd/framework/module"
 )
 
 func AuthorizeEmailUse(ctx context.Context, username string, addrs []string, mapping module.Table) (bool, error) {

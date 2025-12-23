@@ -2,8 +2,8 @@
 // +build windows plan9
 
 /*
-MailChat - Composable all-in-one email server.
-Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, MailChat contributors
+SirrMesh - Composable all-in-one email server.
+Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, SirrMesh contributors
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/mail-chat-chain/mailchatd/framework/log"
+	"github.com/mail-chat-chain/sirrmeshd/framework/log"
 )
 
 func handleSignals() os.Signal {

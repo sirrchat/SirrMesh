@@ -1,6 +1,6 @@
 /*
-MailChat - Composable all-in-one email server.
-Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, MailChat contributors
+SirrMesh - Composable all-in-one email server.
+Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, SirrMesh contributors
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,7 +23,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/mail-chat-chain/mailchatd/internal/auth/pass_table"
+	"github.com/mail-chat-chain/sirrmeshd/internal/auth/pass_table"
 	"github.com/spf13/cobra"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -33,7 +33,7 @@ func NewCredsCmd() *cobra.Command {
 		Use:   "creds",
 		Short: "User credentials management",
 		Long: `These subcommands can be used to manage local user credentials for any
-authentication module supported by MailChat.
+authentication module supported by SirrMesh.
 
 The corresponding authentication module should be configured in mailchat.conf and be
 defined in a top-level configuration block. By default, the name of that

@@ -1,6 +1,6 @@
 /*
-MailChat - Composable all-in-one email server.
-Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, MailChat contributors
+SirrMesh - Composable all-in-one email server.
+Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, SirrMesh contributors
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -30,16 +30,16 @@ import (
 	"github.com/emersion/go-message/textproto"
 	"github.com/emersion/go-msgauth/authres"
 	"github.com/emersion/go-msgauth/dmarc"
-	"github.com/mail-chat-chain/mailchatd/framework/address"
-	"github.com/mail-chat-chain/mailchatd/framework/buffer"
-	"github.com/mail-chat-chain/mailchatd/framework/config"
-	modconfig "github.com/mail-chat-chain/mailchatd/framework/config/module"
-	"github.com/mail-chat-chain/mailchatd/framework/dns"
-	"github.com/mail-chat-chain/mailchatd/framework/exterrors"
-	"github.com/mail-chat-chain/mailchatd/framework/log"
-	"github.com/mail-chat-chain/mailchatd/framework/module"
-	mailchatdmarc "github.com/mail-chat-chain/mailchatd/internal/dmarc"
-	"github.com/mail-chat-chain/mailchatd/internal/target"
+	"github.com/mail-chat-chain/sirrmeshd/framework/address"
+	"github.com/mail-chat-chain/sirrmeshd/framework/buffer"
+	"github.com/mail-chat-chain/sirrmeshd/framework/config"
+	modconfig "github.com/mail-chat-chain/sirrmeshd/framework/config/module"
+	"github.com/mail-chat-chain/sirrmeshd/framework/dns"
+	"github.com/mail-chat-chain/sirrmeshd/framework/exterrors"
+	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	sirrmeshdmarc "github.com/mail-chat-chain/sirrmeshd/internal/dmarc"
+	"github.com/mail-chat-chain/sirrmeshd/internal/target"
 	"golang.org/x/net/idna"
 )
 
@@ -239,13 +239,13 @@ func (s *state) spfResult(res spf.Result, err error) module.CheckResult {
 }
 
 func (s *state) relyOnDMARC(ctx context.Context, hdr textproto.Header) bool {
-	fromDomain, err := mailchatdmarc.ExtractFromDomain(hdr)
+	fromDomain, err := sirrmeshdmarc.ExtractFromDomain(hdr)
 	if err != nil {
 		s.log.Error("DMARC domains extract", err)
 		return false
 	}
 
-	policyDomain, record, err := mailchatdmarc.FetchRecord(ctx, s.c.resolver, fromDomain)
+	policyDomain, record, err := sirrmeshdmarc.FetchRecord(ctx, s.c.resolver, fromDomain)
 	if err != nil {
 		s.log.Error("DMARC fetch", err, "from_domain", fromDomain)
 		return false

@@ -1,0 +1,10 @@
+stateDiagram-v2
+    [*] --> Pending: 提交注册
+    Pending --> Approved: 投票通过
+    Pending --> Rejected: 投票拒绝
+    Approved --> Suspended: 违规/下线
+    Approved --> Revoked: 主动注销
+    Suspended --> Approved: 恢复服务
+    Suspended --> Revoked: 永久注销
+    Rejected --> [*]
+    Revoked --> [*]

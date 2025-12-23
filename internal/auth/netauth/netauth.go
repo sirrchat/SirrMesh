@@ -5,9 +5,9 @@ import (
 	"fmt"
 
 	"github.com/hashicorp/go-hclog"
-	"github.com/mail-chat-chain/mailchatd/framework/config"
-	"github.com/mail-chat-chain/mailchatd/framework/log"
-	"github.com/mail-chat-chain/mailchatd/framework/module"
+	"github.com/mail-chat-chain/sirrmeshd/framework/config"
+	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/mail-chat-chain/sirrmeshd/framework/module"
 	"github.com/netauth/netauth/pkg/netauth"
 )
 

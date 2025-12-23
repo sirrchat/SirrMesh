@@ -1,6 +1,6 @@
 /*
-MailChat - Composable all-in-one email server.
-Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, MailChat contributors
+SirrMesh - Composable all-in-one email server.
+Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, SirrMesh contributors
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -27,14 +27,14 @@ import (
 	"sync"
 
 	"github.com/emersion/go-message/textproto"
-	"github.com/mail-chat-chain/mailchatd/framework/address"
-	"github.com/mail-chat-chain/mailchatd/framework/buffer"
-	"github.com/mail-chat-chain/mailchatd/framework/config"
-	"github.com/mail-chat-chain/mailchatd/framework/dns"
-	"github.com/mail-chat-chain/mailchatd/framework/exterrors"
-	"github.com/mail-chat-chain/mailchatd/framework/log"
-	"github.com/mail-chat-chain/mailchatd/framework/module"
-	"github.com/mail-chat-chain/mailchatd/internal/target"
+	"github.com/mail-chat-chain/sirrmeshd/framework/address"
+	"github.com/mail-chat-chain/sirrmeshd/framework/buffer"
+	"github.com/mail-chat-chain/sirrmeshd/framework/config"
+	"github.com/mail-chat-chain/sirrmeshd/framework/dns"
+	"github.com/mail-chat-chain/sirrmeshd/framework/exterrors"
+	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/mail-chat-chain/sirrmeshd/internal/target"
 	"golang.org/x/sync/errgroup"
 )
 

@@ -1,15 +1,15 @@
-# SirrChat
+# SirrMesh
 
-**SirrChat** 是一个去中心化的加密通讯系统，允许任何人搭建和运行属于自己的通讯节点。通过集成区块链认证和企业级邮件协议，SirrChat 为用户提供完全自主可控的通讯平台，实现真正的数据主权和隐私保护。
+**SirrMesh** 是一个去中心化的加密通讯系统，允许任何人搭建和运行属于自己的通讯节点。通过集成区块链认证和企业级邮件协议，SirrMesh 为用户提供完全自主可控的通讯平台，实现真正的数据主权和隐私保护。
 
-**搭建你自己的 SirrChat 节点，掌控你的通讯数据。**
+**搭建你自己的 SirrMesh 节点，掌控你的通讯数据。**
 
 [![许可证](https://img.shields.io/badge/license-GPL%203.0-blue)](LICENSE)
 [![Go版本](https://img.shields.io/badge/go-1.24+-blue.svg)](https://golang.org)
 
 [English](README.md) | [中文](README_ZH.md)
 
-## 为什么要搭建自己的 SirrChat 节点？
+## 为什么要搭建自己的 SirrMesh 节点？
 
 - 🔐 **数据主权** - 所有通讯数据存储在你自己的服务器上
 - 🌐 **去中心化** - 不依赖任何第三方服务提供商
@@ -41,16 +41,16 @@
 
 ### 一键搭建节点
 
-使用单条命令快速搭建你的 SirrChat 节点：
+使用单条命令快速搭建你的 SirrMesh 节点：
 
 ```bash
 # 下载并运行安装脚本
-curl -sSL https://raw.githubusercontent.com/mail-chat-chain/sirrchatd/main/start.sh | bash
+curl -sSL https://raw.githubusercontent.com/mail-chat-chain/sirrmeshd/main/start.sh | bash
 ```
 
 自动安装程序将执行以下操作，帮你快速搭建独立节点：
 
-1. **下载和安装** `sirrchatd` 节点程序
+1. **下载和安装** `sirrmeshd` 节点程序
 2. **域名配置** - 设置你的节点域名
 3. **DNS 提供商设置** - 从 15 种支持的提供商中选择
 4. **TLS 证书** - 自动 ACME DNS-01 挑战设置
@@ -93,21 +93,21 @@ curl -sSL https://raw.githubusercontent.com/mail-chat-chain/sirrchatd/main/start
 
 ```bash
 # 克隆仓库
-git clone https://github.com/mail-chat-chain/sirrchatd.git
-cd sirrchatd
+git clone https://github.com/mail-chat-chain/sirrmeshd.git
+cd sirrmeshd
 
 # 构建二进制文件
 make build
 
 # 验证安装
-./build/sirrchatd --help
+./build/sirrmeshd --help
 ```
 
 ### 启动节点
 
 ```bash
-# 启动你的 SirrChat 节点
-./sirrchatd run
+# 启动你的 SirrMesh 节点
+./sirrmeshd run
 
 # 或者使用 start.sh 脚本自动配置并启动节点
 ./start.sh
@@ -127,7 +127,7 @@ make build
 ### 节点配置示例
 
 ```
-# sirrchatd.conf - 你的节点配置文件
+# sirrmeshd.conf - 你的节点配置文件
 $(hostname) = mx1.example.com
 $(primary_domain) = example.com
 
@@ -149,7 +149,7 @@ storage.imapsql local_mailboxes {
 }
 
 auth.pass_blockchain blockchain_auth {
-    blockchain &sirrchatd
+    blockchain &sirrmeshd
     storage &local_mailboxes
 }
 
@@ -171,25 +171,25 @@ imap tls://0.0.0.0:993 {
 
 ```bash
 # 配置 DNS 设置
-sirrchatd dns config
+sirrmeshd dns config
 
 # 检查 DNS 配置
-sirrchatd dns check
+sirrmeshd dns check
 
 # 导出域名设置的 DNS 记录
-sirrchatd dns export
+sirrmeshd dns export
 
 # 获取 A 记录的公网 IP
-sirrchatd dns ip
+sirrmeshd dns ip
 ```
 
 ## 节点管理命令
 
 ```
-sirrchatd [command]
+sirrmeshd [command]
 
 可用命令:
-  run          启动 SirrChat 节点
+  run          启动 SirrMesh 节点
   creds        节点用户凭证管理
   dns          DNS 配置指南和检查器
   hash         生成用于 pass_table 的密码哈希
@@ -253,7 +253,7 @@ sirrchatd [command]
 ### 性能调优
 
 ```
-# sirrchatd.conf
+# sirrmeshd.conf
 
 smtp tcp://0.0.0.0:8825 {
     limits {
@@ -305,4 +305,4 @@ make lint
 
 ---
 
-**SirrChat** - 去中心化加密通讯系统，搭建属于你自己的通讯节点
+**SirrMesh** - 去中心化加密通讯系统，搭建属于你自己的通讯节点

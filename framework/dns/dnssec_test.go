@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/mail-chat-chain/mailchatd/framework/log"
+	"github.com/mail-chat-chain/sirrmeshd/framework/log"
 	"github.com/miekg/dns"
 )
 

@@ -1,6 +1,6 @@
 /*
-MailChat - Composable all-in-one email server.
-Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, MailChat contributors
+SirrMesh - Composable all-in-one email server.
+Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, SirrMesh contributors
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -28,8 +28,8 @@ import (
 
 	"golang.org/x/term"
 
-	"github.com/mail-chat-chain/mailchatd/framework/config"
-	"github.com/mail-chat-chain/mailchatd/framework/log"
+	"github.com/mail-chat-chain/sirrmeshd/framework/config"
+	"github.com/mail-chat-chain/sirrmeshd/framework/log"
 )
 
 /*
@@ -125,11 +125,11 @@ func reinitLogging() {
 	log.DefaultLogger.Out = newOut
 }
 
-// generateMailConfigContent generates the default mailchatd.conf content from project template
+// generateMailConfigContent generates the default sirrmeshd.conf content from project template
 func generateMailConfigContent() string {
-	return `## MailChat - default configuration file (2022-06-18)
+	return `## SirrMesh - default configuration file (2022-06-18)
 # Suitable for small-scale deployments. Uses its own format for local users DB,
-# should be managed via mailchatd subcommands.
+# should be managed via sirrmeshd subcommands.
 #
 # See tutorials at https://maddy.email for guidance on typical
 # configuration changes.
@@ -157,7 +157,7 @@ tls {
 
 # ----------------------------------------------------------------------------
 # blockchains
-# blockchain.ethereum mailchatd {
+# blockchain.ethereum sirrmeshd {
 #     chain_id 26000
 #     rpc_url http://127.0.0.1:8545
 # }
@@ -174,7 +174,7 @@ blockchain.ethereum bsc {
 # also by SMTP & Submission endpoints for delivery of local messages.
 #
 # IMAP accounts, mailboxes and all message metadata can be inspected using
-# imap-* subcommands of mailchatd.
+# imap-* subcommands of sirrmeshd.
 
 storage.imapsql local_mailboxes {
     driver sqlite3
@@ -189,7 +189,7 @@ storage.imapsql local_mailboxes {
 # PAM, /etc/shadow file).
 #
 # If table module supports it (sql_table does) - credentials can be managed
-# using 'mailchatd creds' command.
+# using 'sirrmeshd creds' command.
 
 # auth.pass_table local_authdb {
 #     table sql_table {

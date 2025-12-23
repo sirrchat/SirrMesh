@@ -8,9 +8,9 @@ import (
 
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
-	"github.com/mail-chat-chain/mailchatd/framework/config"
-	"github.com/mail-chat-chain/mailchatd/framework/log"
-	"github.com/mail-chat-chain/mailchatd/framework/module"
+	"github.com/mail-chat-chain/sirrmeshd/framework/config"
+	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/mail-chat-chain/sirrmeshd/framework/module"
 )
 
 func verifySignature(message, signature, address string) (bool, error) {

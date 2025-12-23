@@ -1,4 +1,4 @@
-module github.com/mail-chat-chain/mailchatd
+module github.com/mail-chat-chain/sirrmeshd
 
 go 1.24
 

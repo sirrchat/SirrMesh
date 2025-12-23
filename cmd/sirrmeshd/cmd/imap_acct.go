@@ -1,6 +1,6 @@
 /*
-MailChat - Composable all-in-one email server.
-Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, MailChat contributors
+SirrMesh - Composable all-in-one email server.
+Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, SirrMesh contributors
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ import (
 
 	"github.com/emersion/go-imap"
 	imapbackend "github.com/emersion/go-imap/backend"
-	"github.com/mail-chat-chain/mailchatd/framework/module"
+	"github.com/mail-chat-chain/sirrmeshd/framework/module"
 	"github.com/spf13/cobra"
 )
 
@@ -49,7 +49,7 @@ func NewImapAcctCmd() *cobra.Command {
 		Use:   "imap-acct",
 		Short: "IMAP storage accounts management",
 		Long: `These subcommands can be used to list/create/delete IMAP storage
-accounts for any storage backend supported by MailChat.
+accounts for any storage backend supported by SirrMesh.
 
 The corresponding storage backend should be configured in mailchat.conf and be
 defined in a top-level configuration block. By default, the name of that
@@ -131,7 +131,7 @@ func imapAcctList(cmd *cobra.Command, args []string) error {
 
 	mbe, ok := be.(module.ManageableStorage)
 	if !ok {
-		return fmt.Errorf("storage backend does not support accounts management using MailChat command")
+		return fmt.Errorf("storage backend does not support accounts management using SirrMesh command")
 	}
 
 	list, err := mbe.ListIMAPAccts()
@@ -158,7 +158,7 @@ func imapAcctCreate(cmd *cobra.Command, args []string) error {
 
 	mbe, ok := be.(module.ManageableStorage)
 	if !ok {
-		return fmt.Errorf("storage backend does not support accounts management using MailChat command")
+		return fmt.Errorf("storage backend does not support accounts management using SirrMesh command")
 	}
 
 	username := args[0]
@@ -227,7 +227,7 @@ func imapAcctRemove(cmd *cobra.Command, args []string) error {
 
 	mbe, ok := be.(module.ManageableStorage)
 	if !ok {
-		return fmt.Errorf("storage backend does not support accounts management using MailChat command")
+		return fmt.Errorf("storage backend does not support accounts management using SirrMesh command")
 	}
 
 	username := args[0]

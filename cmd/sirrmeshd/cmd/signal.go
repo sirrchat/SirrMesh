@@ -2,8 +2,8 @@
 // +build darwin dragonfly freebsd linux netbsd openbsd solaris
 
 /*
-MailChat - Composable all-in-one email server.
-Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, MailChat contributors
+SirrMesh - Composable all-in-one email server.
+Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, SirrMesh contributors
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -26,8 +26,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/mail-chat-chain/mailchatd/framework/hooks"
-	"github.com/mail-chat-chain/mailchatd/framework/log"
+	"github.com/mail-chat-chain/sirrmeshd/framework/hooks"
+	"github.com/mail-chat-chain/sirrmeshd/framework/log"
 )
 
 // handleSignals function creates and listens on OS signals channel.

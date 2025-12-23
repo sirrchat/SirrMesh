@@ -1,6 +1,6 @@
 /*
-MailChat - Composable all-in-one email server.
-Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, MailChat contributors
+SirrMesh - Composable all-in-one email server.
+Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, SirrMesh contributors
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ var (
 	// preserved between sessions.
 	//
 	// Value of this variable must not change after initialization
-	// in cmd/MailChat/main.go.
+	// in cmd/SirrMesh/main.go.
 	StateDirectory string
 
 	// RuntimeDirectory contains the path to the directory that
@@ -35,13 +35,13 @@ var (
 	// RuntimeDirectory can be dedicated for mailcoin.
 	//
 	// Value of this variable must not change after initialization
-	// in cmd/MailChat/main.go.
+	// in cmd/SirrMesh/main.go.
 	RuntimeDirectory string
 
 	// LibexecDirectory contains the path to the directory
 	// where helper binaries should be searched.
 	//
 	// Value of this variable must not change after initialization
-	// in cmd/MailChat/main.go.
+	// in cmd/SirrMesh/main.go.
 	LibexecDirectory string
 )

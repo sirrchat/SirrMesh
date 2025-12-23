@@ -6,9 +6,9 @@ import (
 
 	"github.com/johannesboyne/gofakes3"
 	"github.com/johannesboyne/gofakes3/backend/s3mem"
-	"github.com/mail-chat-chain/mailchatd/framework/config"
-	"github.com/mail-chat-chain/mailchatd/framework/module"
-	"github.com/mail-chat-chain/mailchatd/internal/storage/blob"
+	"github.com/mail-chat-chain/sirrmeshd/framework/config"
+	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/mail-chat-chain/sirrmeshd/internal/storage/blob"
 )
 
 func TestFS(t *testing.T) {

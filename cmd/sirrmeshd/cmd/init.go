@@ -1,6 +1,6 @@
 /*
-MailChat - Composable all-in-one email server.
-Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, MailChat contributors
+SirrMesh - Composable all-in-one email server.
+Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, SirrMesh contributors
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -26,23 +26,23 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// NewInitCmd creates the init command for initializing mailchatd configuration
+// NewInitCmd creates the init command for initializing sirrmeshd configuration
 func NewInitCmd() *cobra.Command {
 	var force bool
 
 	initCmd := &cobra.Command{
 		Use:   "init",
-		Short: "Initialize mailchatd configuration directory and default config file",
-		Long: `Initialize mailchatd by creating the configuration directory and
+		Short: "Initialize sirrmeshd configuration directory and default config file",
+		Long: `Initialize sirrmeshd by creating the configuration directory and
 generating a default configuration file.
 
-The configuration directory defaults to ~/.mailchatd or can be set via
+The configuration directory defaults to ~/.sirrmeshd or can be set via
 the MAILCHAT_HOME environment variable.
 
 Example:
-  mailchatd init
-  MAILCHAT_HOME=/etc/mailchatd mailchatd init
-  mailchatd init --force  # Overwrite existing config`,
+  sirrmeshd init
+  MAILCHAT_HOME=/etc/sirrmeshd sirrmeshd init
+  sirrmeshd init --force  # Overwrite existing config`,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return runInit(force)
 		},
@@ -56,9 +56,9 @@ Example:
 func runInit(force bool) error {
 	// Get config directory
 	configDir := ConfigDirectory
-	configFile := filepath.Join(configDir, "mailchatd.conf")
+	configFile := filepath.Join(configDir, "sirrmeshd.conf")
 
-	fmt.Printf("Initializing mailchatd...\n")
+	fmt.Printf("Initializing sirrmeshd...\n")
 	fmt.Printf("Configuration directory: %s\n", configDir)
 
 	// Create config directory if not exists
@@ -102,7 +102,7 @@ func runInit(force bool) error {
 	fmt.Printf("1. Edit the configuration file: %s\n", configFile)
 	fmt.Printf("2. Update hostname and domain settings\n")
 	fmt.Printf("3. Configure TLS/ACME settings with your DNS provider\n")
-	fmt.Printf("4. Run 'mailchatd run' to start the server\n")
+	fmt.Printf("4. Run 'sirrmeshd run' to start the server\n")
 
 	return nil
 }

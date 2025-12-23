@@ -56,13 +56,13 @@ get_public_ip() {
 }
 
 # Installation function
-install_mailchatd() {
-    print_info "Starting mailchatd installation..."
+install_sirrmeshd() {
+    print_info "Starting sirrmeshd installation..."
     
     # Check if already installed in /usr/local/bin
-    if [ -x "/usr/local/bin/mailchatd" ]; then
-        print_success "mailchatd is already installed in /usr/local/bin"
-        local version=$(/usr/local/bin/mailchatd version 2>/dev/null | grep -v "Using config file" | head -n1 || echo "unknown")
+    if [ -x "/usr/local/bin/sirrmeshd" ]; then
+        print_success "sirrmeshd is already installed in /usr/local/bin"
+        local version=$(/usr/local/bin/sirrmeshd version 2>/dev/null | grep -v "Using config file" | head -n1 || echo "unknown")
         if [ -z "$version" ]; then
             version="unknown"
         fi
@@ -73,44 +73,44 @@ install_mailchatd() {
             return 0
         fi
     else
-        # Check if mailchatd exists elsewhere in PATH
-        if command -v mailchatd &> /dev/null; then
-            local existing_path=$(which mailchatd)
-            print_info "mailchatd found at: $existing_path"
-            print_info "This script will install mailchatd to /usr/local/bin"
+        # Check if sirrmeshd exists elsewhere in PATH
+        if command -v sirrmeshd &> /dev/null; then
+            local existing_path=$(which sirrmeshd)
+            print_info "sirrmeshd found at: $existing_path"
+            print_info "This script will install sirrmeshd to /usr/local/bin"
             printf "Do you want to proceed? (y/N): "
             read proceed
             if ! echo "$proceed" | grep -qE '^[Yy]$'; then
                 return 0
             fi
         else
-            print_info "mailchatd not found, proceeding with installation..."
+            print_info "sirrmeshd not found, proceeding with installation..."
         fi
     fi
     
     # Get system architecture
     local system_arch=$(get_system_arch)
-    local download_url="https://download.mailcoin.org/mailchatd-${system_arch}-v0.3.1"
+    local download_url="https://download.mailcoin.org/sirrmeshd-${system_arch}-v0.3.1"
     
     print_info "System architecture: $system_arch"
     print_info "Download URL: $download_url"
     
     # Download executable file
-    print_info "Downloading mailchatd..."
-    if ! curl -L -o /tmp/mailchatd "$download_url"; then
+    print_info "Downloading sirrmeshd..."
+    if ! curl -L -o /tmp/sirrmeshd "$download_url"; then
         print_error "Download failed"
         exit 1
     fi
     
     # Install to /usr/local/bin
     print_info "Installing to /usr/local/bin..."
-    sudo mv /tmp/mailchatd /usr/local/bin/mailchatd
-    sudo chmod +x /usr/local/bin/mailchatd
+    sudo mv /tmp/sirrmeshd /usr/local/bin/sirrmeshd
+    sudo chmod +x /usr/local/bin/sirrmeshd
     
     # Verify installation
-    if [ -x "/usr/local/bin/mailchatd" ]; then
-        print_success "mailchatd installed successfully"
-        local installed_version=$(/usr/local/bin/mailchatd version 2>/dev/null | grep -v "Using config file" | head -n1 || echo "")
+    if [ -x "/usr/local/bin/sirrmeshd" ]; then
+        print_success "sirrmeshd installed successfully"
+        local installed_version=$(/usr/local/bin/sirrmeshd version 2>/dev/null | grep -v "Using config file" | head -n1 || echo "")
         if [ -n "$installed_version" ]; then
             print_info "Installed version: $installed_version"
         fi
@@ -573,8 +573,8 @@ collect_dns_credentials() {
 }
 
 # Configuration function
-configure_mailchatd() {
-    print_info "Starting mailchatd configuration..."
+configure_sirrmeshd() {
+    print_info "Starting sirrmeshd configuration..."
     
     # 1. Ask for working directory path
     # Check if MAILCHAT_HOME is already set
@@ -583,8 +583,8 @@ configure_mailchatd() {
         read -p "Enter working directory path [default: $MAILCHAT_HOME]: " work_dir
         work_dir=${work_dir:-$MAILCHAT_HOME}
     else
-        read -p "Enter working directory path [default: /root/.mailchatd]: " work_dir
-        work_dir=${work_dir:-/root/.mailchatd}
+        read -p "Enter working directory path [default: /root/.sirrmeshd]: " work_dir
+        work_dir=${work_dir:-/root/.sirrmeshd}
     fi
     
     # Set and export MAILCHAT_HOME immediately
@@ -643,20 +643,20 @@ configure_mailchatd() {
     if [ "$(id -u)" -eq 0 ]; then
         # Create system-level environment variable file
         if [ -d "/etc/profile.d" ]; then
-            cat > /etc/profile.d/mailchatd.sh << EOF
+            cat > /etc/profile.d/sirrmeshd.sh << EOF
 # MailChat Environment Variables
 export MAILCHAT_HOME="$work_dir"
 EOF
-            chmod 644 /etc/profile.d/mailchatd.sh
-            print_success "Created system-level environment file /etc/profile.d/mailchatd.sh"
+            chmod 644 /etc/profile.d/sirrmeshd.sh
+            print_success "Created system-level environment file /etc/profile.d/sirrmeshd.sh"
         fi
 
         # For systemd services, create or update environment file
-        mkdir -p /etc/mailchatd
-        cat > /etc/mailchatd/environment << EOF
+        mkdir -p /etc/sirrmeshd
+        cat > /etc/sirrmeshd/environment << EOF
 MAILCHAT_HOME=$work_dir
 EOF
-        print_success "Created systemd environment file /etc/mailchatd/environment"
+        print_success "Created systemd environment file /etc/sirrmeshd/environment"
 
         # Add to /etc/environment for system-wide availability
         if [ -f "/etc/environment" ]; then
@@ -677,20 +677,20 @@ EOF
     fi
 
     # Load environment variables immediately (for current script session)
-    if [ -f "/etc/profile.d/mailchatd.sh" ]; then
-        . /etc/profile.d/mailchatd.sh
+    if [ -f "/etc/profile.d/sirrmeshd.sh" ]; then
+        . /etc/profile.d/sirrmeshd.sh
     fi
 
     print_success "MAILCHAT_HOME environment variable set and effective immediately: $MAILCHAT_HOME"
     print_info "Environment variables permanently saved, new terminal sessions will load automatically"
 
-    # Initialize configuration using mailchatd init
-    print_info "Initializing mailchatd configuration..."
-    if [ -f "$work_dir/mailchatd.conf" ]; then
+    # Initialize configuration using sirrmeshd init
+    print_info "Initializing sirrmeshd configuration..."
+    if [ -f "$work_dir/sirrmeshd.conf" ]; then
         print_info "Configuration file already exists, skipping init"
     else
-        if ! MAILCHAT_HOME="$work_dir" mailchatd init; then
-            print_error "Failed to initialize mailchatd configuration"
+        if ! MAILCHAT_HOME="$work_dir" sirrmeshd init; then
+            print_error "Failed to initialize sirrmeshd configuration"
             exit 1
         fi
         print_success "Configuration initialized successfully"
@@ -832,8 +832,8 @@ EOF
     # 5. Collect DNS provider credentials based on selection
     collect_dns_credentials "$dns_provider"
     
-    # 6. Modify mailchatd.conf
-    local config_file="$work_dir/mailchatd.conf"
+    # 6. Modify sirrmeshd.conf
+    local config_file="$work_dir/sirrmeshd.conf"
     
     print_info "Updating configuration file..."
     
@@ -896,7 +896,7 @@ EOF
     
     # 7. Check DNS settings
     print_info "Checking DNS settings..."
-    if MAILCHAT_HOME="$work_dir" mailchatd dns check; then
+    if MAILCHAT_HOME="$work_dir" sirrmeshd dns check; then
         print_success "DNS settings check passed"
     else
         print_error "DNS settings check failed, please check configuration"
@@ -904,7 +904,7 @@ EOF
 
     # 8. Export DNS configuration information
     print_info "Exporting DNS configuration information..."
-    MAILCHAT_HOME="$work_dir" mailchatd dns export
+    MAILCHAT_HOME="$work_dir" sirrmeshd dns export
     
     print_success "Configuration completed"
 }
@@ -914,58 +914,58 @@ start_services() {
     print_info "Starting to set up system services..."
 
     # Determine MAILCHAT_HOME value
-    local mailchat_home
-    if [ -f "/etc/mailchatd/environment" ]; then
+    local sirrmesh_home
+    if [ -f "/etc/sirrmeshd/environment" ]; then
         # Read from environment file
-        mailchat_home=$(grep "^MAILCHAT_HOME=" /etc/mailchatd/environment | cut -d= -f2)
+        sirrmesh_home=$(grep "^MAILCHAT_HOME=" /etc/sirrmeshd/environment | cut -d= -f2)
     fi
 
     # If not in environment file, try to get from environment variable
-    if [ -z "$mailchat_home" ]; then
-        mailchat_home="${MAILCHAT_HOME}"
+    if [ -z "$sirrmesh_home" ]; then
+        sirrmesh_home="${MAILCHAT_HOME}"
     fi
 
     # If still not available, ask user
-    if [ -z "$mailchat_home" ]; then
-        read -p "Enter MAILCHAT_HOME path [default: /root/.mailchatd]: " mailchat_home
-        mailchat_home=${mailchat_home:-/root/.mailchatd}
+    if [ -z "$sirrmesh_home" ]; then
+        read -p "Enter MAILCHAT_HOME path [default: /root/.sirrmeshd]: " sirrmesh_home
+        sirrmesh_home=${sirrmesh_home:-/root/.sirrmeshd}
 
         # Save to environment file
-        mkdir -p /etc/mailchatd
-        cat > /etc/mailchatd/environment << EOF
-MAILCHAT_HOME=$mailchat_home
+        mkdir -p /etc/sirrmeshd
+        cat > /etc/sirrmeshd/environment << EOF
+MAILCHAT_HOME=$sirrmesh_home
 EOF
-        print_success "MAILCHAT_HOME saved to /etc/mailchatd/environment"
+        print_success "MAILCHAT_HOME saved to /etc/sirrmeshd/environment"
     else
-        print_info "Using MAILCHAT_HOME: $mailchat_home"
+        print_info "Using MAILCHAT_HOME: $sirrmesh_home"
     fi
 
-    # Check and handle mailchatd.service
+    # Check and handle sirrmeshd.service
     local create_mail_service=false
     
-    if [ -f "/etc/systemd/system/mailchatd.service" ]; then
-        print_info "Detected existing mailchatd.service"
-        read -p "Stop and recreate mailchatd.service? (y/N): " recreate_mail_service
+    if [ -f "/etc/systemd/system/sirrmeshd.service" ]; then
+        print_info "Detected existing sirrmeshd.service"
+        read -p "Stop and recreate sirrmeshd.service? (y/N): " recreate_mail_service
         if echo "$recreate_mail_service" | grep -qE '^[Yy]$'; then
-            print_info "Stopping mailchatd.service..."
-            sudo systemctl stop mailchatd.service 2>/dev/null || true
-            sudo systemctl disable mailchatd.service 2>/dev/null || true
-            sudo rm -f /etc/systemd/system/mailchatd.service
+            print_info "Stopping sirrmeshd.service..."
+            sudo systemctl stop sirrmeshd.service 2>/dev/null || true
+            sudo systemctl disable sirrmeshd.service 2>/dev/null || true
+            sudo rm -f /etc/systemd/system/sirrmeshd.service
             sudo systemctl daemon-reload
-            print_success "Old mailchatd.service removed"
+            print_success "Old sirrmeshd.service removed"
             create_mail_service=true
         else
-            print_info "Keeping existing mailchatd.service"
+            print_info "Keeping existing sirrmeshd.service"
         fi
     else
         create_mail_service=true
     fi
     
-    # Create mailchatd.service
+    # Create sirrmeshd.service
     if [ "$create_mail_service" = true ]; then
-        print_info "Creating mailchatd.service..."
+        print_info "Creating sirrmeshd.service..."
         
-        cat > /tmp/mailchatd.service << EOF
+        cat > /tmp/sirrmeshd.service << EOF
 [Unit]
 Description=MailChat Mail Service
 After=network-online.target
@@ -974,8 +974,8 @@ Wants=network-online.target
 [Service]
 Type=simple
 User=root
-EnvironmentFile=/etc/mailchatd/environment
-ExecStart=/usr/local/bin/mailchatd run
+EnvironmentFile=/etc/sirrmeshd/environment
+ExecStart=/usr/local/bin/sirrmeshd run
 Restart=always
 RestartSec=3
 LimitNOFILE=65535
@@ -986,24 +986,24 @@ StandardError=journal
 WantedBy=multi-user.target
 EOF
         
-        sudo mv /tmp/mailchatd.service /etc/systemd/system/
+        sudo mv /tmp/sirrmeshd.service /etc/systemd/system/
         sudo systemctl daemon-reload
-        sudo systemctl enable mailchatd.service
-        print_success "mailchatd.service created successfully"
+        sudo systemctl enable sirrmeshd.service
+        print_success "sirrmeshd.service created successfully"
     fi
     
-    # Start mailchatd.service (if service file exists)
-    if [ -f "/etc/systemd/system/mailchatd.service" ]; then
-        print_info "Starting mailchatd.service..."
-        sudo systemctl restart mailchatd.service
-        if sudo systemctl is-active --quiet mailchatd.service; then
-            print_success "mailchatd.service started successfully"
+    # Start sirrmeshd.service (if service file exists)
+    if [ -f "/etc/systemd/system/sirrmeshd.service" ]; then
+        print_info "Starting sirrmeshd.service..."
+        sudo systemctl restart sirrmeshd.service
+        if sudo systemctl is-active --quiet sirrmeshd.service; then
+            print_success "sirrmeshd.service started successfully"
         else
-            print_error "mailchatd.service failed to start"
-            sudo systemctl status mailchatd.service --no-pager
+            print_error "sirrmeshd.service failed to start"
+            sudo systemctl status sirrmeshd.service --no-pager
         fi
     else
-        print_info "mailchatd.service does not exist, skipping startup"
+        print_info "sirrmeshd.service does not exist, skipping startup"
     fi
     
     print_success "All services have been set up and started"
@@ -1015,8 +1015,8 @@ show_menu() {
     echo "       MailChat Installation and Configuration Script"
     echo "========================================"
     echo "1. Complete installation (Install + Configure + Start)"
-    echo "2. Install mailchatd only"
-    echo "3. Configure mailchatd only"
+    echo "2. Install sirrmeshd only"
+    echo "3. Configure sirrmeshd only"
     echo "4. Start services only"
     echo "5. Exit"
     echo "========================================"
@@ -1036,16 +1036,16 @@ main() {
     
     case $choice in
         1)
-            install_mailchatd
-            configure_mailchatd
+            install_sirrmeshd
+            configure_sirrmeshd
             start_services
             print_success "Complete installation finished!"
             ;;
         2)
-            install_mailchatd
+            install_sirrmeshd
             ;;
         3)
-            configure_mailchatd
+            configure_sirrmeshd
             ;;
         4)
             start_services
@@ -1061,11 +1061,11 @@ main() {
     esac
     
     print_info "View service status:"
-    print_info "  systemctl status mailchatd"
+    print_info "  systemctl status sirrmeshd"
     print_info "View logs:"
-    print_info "  journalctl -u mailchatd -f"
+    print_info "  journalctl -u sirrmeshd -f"
     print_info "Manually load environment variables (if needed):"
-    print_info "  source /etc/profile.d/mailchatd.sh"
+    print_info "  source /etc/profile.d/sirrmeshd.sh"
 }
 
 # Ensure stdin is from terminal when running via pipe

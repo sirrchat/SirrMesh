@@ -6,7 +6,7 @@ package blob
 import (
 	"testing"
 
-	"github.com/mail-chat-chain/mailchatd/framework/module"
+	"github.com/mail-chat-chain/sirrmeshd/framework/module"
 )
 
 func TestStore(t *testing.T, newStore func() module.BlobStore, cleanStore func(module.BlobStore)) {

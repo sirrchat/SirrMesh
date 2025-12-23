@@ -9,9 +9,9 @@ import (
 
 	backendtests "github.com/foxcpp/go-imap-backend-tests"
 	imapsql "github.com/foxcpp/go-imap-sql"
-	"github.com/mail-chat-chain/mailchatd/framework/module"
-	imapsql2 "github.com/mail-chat-chain/mailchatd/internal/storage/imapsql"
-	"github.com/mail-chat-chain/mailchatd/internal/testutils"
+	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	imapsql2 "github.com/mail-chat-chain/sirrmeshd/internal/storage/imapsql"
+	"github.com/mail-chat-chain/sirrmeshd/internal/testutils"
 )
 
 type testBack struct {

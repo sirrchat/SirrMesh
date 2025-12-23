@@ -1,6 +1,6 @@
 /*
-MailChat - Composable all-in-one email server.
-Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, MailChat contributors
+SirrMesh - Composable all-in-one email server.
+Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, SirrMesh contributors
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -29,54 +29,54 @@ import (
 	"runtime/debug"
 
 	"github.com/caddyserver/certmagic"
-	parser "github.com/mail-chat-chain/mailchatd/framework/cfgparser"
-	"github.com/mail-chat-chain/mailchatd/framework/config"
-	modconfig "github.com/mail-chat-chain/mailchatd/framework/config/module"
-	"github.com/mail-chat-chain/mailchatd/framework/config/tls"
-	"github.com/mail-chat-chain/mailchatd/framework/hooks"
-	"github.com/mail-chat-chain/mailchatd/framework/log"
-	"github.com/mail-chat-chain/mailchatd/framework/module"
-	"github.com/mail-chat-chain/mailchatd/internal/authz"
+	parser "github.com/mail-chat-chain/sirrmeshd/framework/cfgparser"
+	"github.com/mail-chat-chain/sirrmeshd/framework/config"
+	modconfig "github.com/mail-chat-chain/sirrmeshd/framework/config/module"
+	"github.com/mail-chat-chain/sirrmeshd/framework/config/tls"
+	"github.com/mail-chat-chain/sirrmeshd/framework/hooks"
+	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/mail-chat-chain/sirrmeshd/internal/authz"
 	"github.com/spf13/cobra"
 
 	// Import packages for side-effect of module registration.
-	_ "github.com/mail-chat-chain/mailchatd/internal/auth/dovecot_sasl"
-	_ "github.com/mail-chat-chain/mailchatd/internal/auth/external"
-	_ "github.com/mail-chat-chain/mailchatd/internal/auth/ldap"
-	_ "github.com/mail-chat-chain/mailchatd/internal/auth/netauth"
-	_ "github.com/mail-chat-chain/mailchatd/internal/auth/pam"
-	_ "github.com/mail-chat-chain/mailchatd/internal/auth/pass_blockchain"
-	_ "github.com/mail-chat-chain/mailchatd/internal/auth/pass_table"
-	_ "github.com/mail-chat-chain/mailchatd/internal/auth/plain_separate"
-	_ "github.com/mail-chat-chain/mailchatd/internal/auth/shadow"
-	_ "github.com/mail-chat-chain/mailchatd/internal/blockchain"
-	_ "github.com/mail-chat-chain/mailchatd/internal/check/authorize_sender"
-	_ "github.com/mail-chat-chain/mailchatd/internal/check/command"
-	_ "github.com/mail-chat-chain/mailchatd/internal/check/dkim"
-	_ "github.com/mail-chat-chain/mailchatd/internal/check/dns"
-	_ "github.com/mail-chat-chain/mailchatd/internal/check/dnsbl"
-	_ "github.com/mail-chat-chain/mailchatd/internal/check/milter"
-	_ "github.com/mail-chat-chain/mailchatd/internal/check/requiretls"
-	_ "github.com/mail-chat-chain/mailchatd/internal/check/rspamd"
-	_ "github.com/mail-chat-chain/mailchatd/internal/check/spf"
-	_ "github.com/mail-chat-chain/mailchatd/internal/endpoint/dovecot_sasld"
-	_ "github.com/mail-chat-chain/mailchatd/internal/endpoint/imap"
-	_ "github.com/mail-chat-chain/mailchatd/internal/endpoint/openmetrics"
-	_ "github.com/mail-chat-chain/mailchatd/internal/endpoint/smtp"
-	_ "github.com/mail-chat-chain/mailchatd/internal/imap_filter"
-	_ "github.com/mail-chat-chain/mailchatd/internal/imap_filter/command"
-	_ "github.com/mail-chat-chain/mailchatd/internal/libdns"
-	_ "github.com/mail-chat-chain/mailchatd/internal/modify"
-	_ "github.com/mail-chat-chain/mailchatd/internal/modify/dkim"
-	_ "github.com/mail-chat-chain/mailchatd/internal/storage/blob/fs"
-	_ "github.com/mail-chat-chain/mailchatd/internal/storage/blob/s3"
-	_ "github.com/mail-chat-chain/mailchatd/internal/storage/imapsql"
-	_ "github.com/mail-chat-chain/mailchatd/internal/table"
-	_ "github.com/mail-chat-chain/mailchatd/internal/target/queue"
-	_ "github.com/mail-chat-chain/mailchatd/internal/target/remote"
-	_ "github.com/mail-chat-chain/mailchatd/internal/target/smtp"
-	_ "github.com/mail-chat-chain/mailchatd/internal/tls"
-	_ "github.com/mail-chat-chain/mailchatd/internal/tls/acme"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/auth/dovecot_sasl"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/auth/external"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/auth/ldap"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/auth/netauth"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/auth/pam"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/auth/pass_blockchain"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/auth/pass_table"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/auth/plain_separate"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/auth/shadow"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/blockchain"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/check/authorize_sender"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/check/command"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/check/dkim"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/check/dns"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/check/dnsbl"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/check/milter"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/check/requiretls"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/check/rspamd"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/check/spf"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/endpoint/dovecot_sasld"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/endpoint/imap"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/endpoint/openmetrics"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/endpoint/smtp"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/imap_filter"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/imap_filter/command"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/libdns"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/modify"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/modify/dkim"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/storage/blob/fs"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/storage/blob/s3"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/storage/imapsql"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/table"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/target/queue"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/target/remote"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/target/smtp"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/tls"
+	_ "github.com/mail-chat-chain/sirrmeshd/internal/tls/acme"
 )
 
 var (
@@ -107,7 +107,7 @@ var (
 )
 
 func addMailCommands(rootCmd *cobra.Command) {
-	configPath = filepath.Join(ConfigDirectory, "mailchatd.conf")
+	configPath = filepath.Join(ConfigDirectory, "sirrmeshd.conf")
 	AddGlobalStringFlag(rootCmd, "mail-config", "Configuration file to use", "MAILCHAT_CONFIG", configPath, &configPath)
 	// fmt.Printf("Using config file: %s\n", configPath)
 
@@ -171,14 +171,14 @@ func Run(c interface{}) error {
 
 // RunCobra is the entry point for all server-running code with Cobra.
 func RunCobra(cmd *cobra.Command, args []string, showVersion bool, logTargets []string) error {
-	certmagic.UserAgent = "module github.com/mail-chat-chain/mailchatd" + Version
+	certmagic.UserAgent = "module github.com/mail-chat-chain/sirrmeshd" + Version
 
 	if len(args) != 0 {
 		return fmt.Errorf("usage: %s [options]", os.Args[0])
 	}
 
 	if showVersion {
-		fmt.Println("MailChat", BuildInfo())
+		fmt.Println("SirrMesh", BuildInfo())
 		return nil
 	}
 
@@ -193,7 +193,7 @@ func RunCobra(cmd *cobra.Command, args []string, showVersion bool, logTargets []
 
 	os.Setenv("PATH", config.LibexecDirectory+string(filepath.ListSeparator)+os.Getenv("PATH"))
 
-	log.Printf("Starting MailChat %s \n", Version)
+	log.Printf("Starting SirrMesh %s \n", Version)
 
 	// Check if config file exists, create default if not
 	if _, err := os.Stat(configPath); os.IsNotExist(err) {

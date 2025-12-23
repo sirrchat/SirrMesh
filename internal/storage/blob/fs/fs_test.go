@@ -4,9 +4,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/mail-chat-chain/mailchatd/framework/module"
-	"github.com/mail-chat-chain/mailchatd/internal/storage/blob"
-	"github.com/mail-chat-chain/mailchatd/internal/testutils"
+	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/mail-chat-chain/sirrmeshd/internal/storage/blob"
+	"github.com/mail-chat-chain/sirrmeshd/internal/testutils"
 )
 
 func TestFS(t *testing.T) {

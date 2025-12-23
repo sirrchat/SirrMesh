@@ -1,6 +1,6 @@
 /*
-MailChat - Composable all-in-one email server.
-Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, MailChat contributors
+SirrMesh - Composable all-in-one email server.
+Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, SirrMesh contributors
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,9 +19,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 package msgpipeline
 
 import (
-	"github.com/mail-chat-chain/mailchatd/framework/config"
-	modconfig "github.com/mail-chat-chain/mailchatd/framework/config/module"
-	"github.com/mail-chat-chain/mailchatd/framework/module"
+	"github.com/mail-chat-chain/sirrmeshd/framework/config"
+	modconfig "github.com/mail-chat-chain/sirrmeshd/framework/config/module"
+	"github.com/mail-chat-chain/sirrmeshd/framework/module"
 )
 
 // CheckGroup is a module container for a group of Check implementations.

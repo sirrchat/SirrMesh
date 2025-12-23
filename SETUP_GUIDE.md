@@ -1,10 +1,10 @@
-# SirrChat 节点搭建教程
+# SirrMesh 节点搭建教程
 
 ## 📋 项目简介
 
-SirrChat 是一个去中心化的加密通讯系统，允许任何人搭建和运行属于自己的通讯节点。通过本教程，你可以部署自己的 SirrChat 节点，拥有完全的数据控制权和隐私保护。
+SirrMesh 是一个去中心化的加密通讯系统，允许任何人搭建和运行属于自己的通讯节点。通过本教程，你可以部署自己的 SirrMesh 节点，拥有完全的数据控制权和隐私保护。
 
-**为什么要搭建自己的 SirrChat 节点？**
+**为什么要搭建自己的 SirrMesh 节点？**
 - 🔐 **数据主权** - 所有通讯数据存储在你自己的服务器上
 - 🌐 **去中心化** - 不依赖任何第三方服务提供商
 - 🔒 **隐私保护** - 端到端加密，完全掌控自己的通讯
@@ -48,7 +48,7 @@ SirrChat 是一个去中心化的加密通讯系统，允许任何人搭建和�
 
 ### 方法一：使用一键安装脚本（推荐）
 
-如果你已获得 SirrChat 的安装脚本，可以使用以下命令快速搭建节点：
+如果你已获得 SirrMesh 的安装脚本，可以使用以下命令快速搭建节点：
 
 ```bash
 # Download and execute installation script
@@ -132,7 +132,7 @@ go mod verify
 # Build for current platform
 make build
 
-# Output: build/sirrchatd
+# Output: build/sirrmeshd
 ```
 
 ### 交叉编译
@@ -162,11 +162,11 @@ sudo make install
 
 ```bash
 # Build Docker image
-docker build -f Dockerfile.build -t sirrchatd:latest .
+docker build -f Dockerfile.build -t sirrmeshd:latest .
 
 # Extract binary from container
-docker create --name temp sirrchatd:latest
-docker cp temp:/sirrchatd ./build/sirrchatd
+docker create --name temp sirrmeshd:latest
+docker cp temp:/sirrmeshd ./build/sirrmeshd
 docker rm temp
 ```
 
@@ -174,22 +174,22 @@ docker rm temp
 
 ## ⚙️ 配置节点
 
-配置你的 SirrChat 节点，使其能够独立运行并为你的用户提供服务。所有配置数据都存储在你自己的服务器上，完全由你掌控。
+配置你的 SirrMesh 节点，使其能够独立运行并为你的用户提供服务。所有配置数据都存储在你自己的服务器上，完全由你掌控。
 
 ### 1. 设置环境变量
 
 ```bash
-# Set SIRRCHAT_HOME directory
-export SIRRCHAT_HOME=$HOME/.sirrchatd
+# Set SIRRMESH_HOME directory
+export SIRRMESH_HOME=$HOME/.sirrmeshd
 
 # Create directory
-mkdir -p $SIRRCHAT_HOME
+mkdir -p $SIRRMESH_HOME
 ```
 
 **永久配置：**
 ```bash
 # Add to ~/.bashrc or ~/.zshrc
-echo 'export SIRRCHAT_HOME=$HOME/.sirrchatd' >> ~/.bashrc
+echo 'export SIRRMESH_HOME=$HOME/.sirrmeshd' >> ~/.bashrc
 source ~/.bashrc
 ```
 
@@ -197,9 +197,9 @@ source ~/.bashrc
 
 ```bash
 # Generate default configuration
-./build/sirrchatd config init
+./build/sirrmeshd config init
 
-# Configuration file location: $SIRRCHAT_HOME/sirrchatd.conf
+# Configuration file location: $SIRRMESH_HOME/sirrmeshd.conf
 ```
 
 ### 3. 配置数据库
@@ -207,10 +207,10 @@ source ~/.bashrc
 #### 使用 SQLite（开发环境推荐）
 
 ```conf
-# Edit $SIRRCHAT_HOME/sirrchatd.conf
+# Edit $SIRRMESH_HOME/sirrmeshd.conf
 storage.imapsql local_mailboxes {
     driver sqlite3
-    dsn $SIRRCHAT_HOME/imapsql.db
+    dsn $SIRRMESH_HOME/imapsql.db
 }
 ```
 
@@ -219,16 +219,16 @@ storage.imapsql local_mailboxes {
 ```conf
 storage.imapsql local_mailboxes {
     driver postgres
-    dsn postgres://username:password@localhost/sirrchatdb?sslmode=disable
+    dsn postgres://username:password@localhost/sirrmeshdb?sslmode=disable
 }
 ```
 
 **创建 PostgreSQL 数据库：**
 ```bash
 # Create database
-psql -U postgres -c "CREATE DATABASE sirrchatdb;"
-psql -U postgres -c "CREATE USER sirrchat WITH PASSWORD 'your_password';"
-psql -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE sirrchatdb TO sirrchat;"
+psql -U postgres -c "CREATE DATABASE sirrmeshdb;"
+psql -U postgres -c "CREATE USER sirrmesh WITH PASSWORD 'your_password';"
+psql -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE sirrmeshdb TO sirrmesh;"
 ```
 
 #### 使用 MySQL
@@ -236,16 +236,16 @@ psql -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE sirrchatdb TO sirrchat;"
 ```conf
 storage.imapsql local_mailboxes {
     driver mysql
-    dsn sirrchat:password@tcp(localhost:3306)/sirrchatdb?parseTime=true
+    dsn sirrmesh:password@tcp(localhost:3306)/sirrmeshdb?parseTime=true
 }
 ```
 
 **创建 MySQL 数据库：**
 ```bash
 # Create database
-mysql -u root -p -e "CREATE DATABASE sirrchatdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
-mysql -u root -p -e "CREATE USER 'sirrchat'@'localhost' IDENTIFIED BY 'your_password';"
-mysql -u root -p -e "GRANT ALL PRIVILEGES ON sirrchatdb.* TO 'sirrchat'@'localhost';"
+mysql -u root -p -e "CREATE DATABASE sirrmeshdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+mysql -u root -p -e "CREATE USER 'sirrmesh'@'localhost' IDENTIFIED BY 'your_password';"
+mysql -u root -p -e "GRANT ALL PRIVILEGES ON sirrmeshdb.* TO 'sirrmesh'@'localhost';"
 mysql -u root -p -e "FLUSH PRIVILEGES;"
 ```
 
@@ -255,7 +255,7 @@ mysql -u root -p -e "FLUSH PRIVILEGES;"
 
 ```conf
 storage.blob.fs local_fs {
-    path $SIRRCHAT_HOME/blobs
+    path $SIRRMESH_HOME/blobs
 }
 ```
 
@@ -263,7 +263,7 @@ storage.blob.fs local_fs {
 
 ```conf
 storage.blob.s3 s3_storage {
-    bucket_name sirrchat-storage
+    bucket_name sirrmesh-storage
     region us-east-1
     access_key_id YOUR_ACCESS_KEY
     secret_access_key YOUR_SECRET_KEY
@@ -276,10 +276,10 @@ storage.blob.s3 s3_storage {
 
 ```bash
 # Create user credentials
-./build/sirrchatd creds create user@example.com
+./build/sirrmeshd creds create user@example.com
 
 # Generate password hash
-./build/sirrchatd hash mypassword
+./build/sirrmeshd hash mypassword
 ```
 
 #### 区块链钱包认证（去中心化身份）
@@ -292,7 +292,7 @@ auth.pass_blockchain {
 ```
 
 **使用说明：**
-这是 SirrChat 的核心特色功能，用户使用以太坊钱包私钥签名消息来完成认证，实现真正的去中心化身份验证：
+这是 SirrMesh 的核心特色功能，用户使用以太坊钱包私钥签名消息来完成认证，实现真正的去中心化身份验证：
 - 🔑 无需传统密码系统
 - 🌐 基于区块链的去中心化身份
 - 🔒 私钥由用户自己掌控
@@ -313,54 +313,54 @@ auth.ldap {
 
 ## 🎯 运行节点
 
-启动你的 SirrChat 节点后，它将成为去中心化通讯网络中的一个独立节点。你的节点将：
+启动你的 SirrMesh 节点后，它将成为去中心化通讯网络中的一个独立节点。你的节点将：
 - 处理本节点用户的通讯请求
-- 与其他 SirrChat 节点互联互通
+- 与其他 SirrMesh 节点互联互通
 - 完全由你控制和管理，不受任何第三方干预
 
-### 启动 SirrChat 节点
+### 启动 SirrMesh 节点
 
 ```bash
 # Run in foreground
-./build/sirrchatd run
+./build/sirrmeshd run
 
 # Run with custom config
-./build/sirrchatd run --config /path/to/config.conf
+./build/sirrmeshd run --config /path/to/config.conf
 
 # Run with debug logging
-./build/sirrchatd run --debug
+./build/sirrmeshd run --debug
 ```
 
 ### 使用 systemd 管理（Linux）
 
 ```bash
 # Generate systemd service file
-./build/sirrchatd systemd generate > /tmp/sirrchatd.service
-sudo mv /tmp/sirrchatd.service /etc/systemd/system/
+./build/sirrmeshd systemd generate > /tmp/sirrmeshd.service
+sudo mv /tmp/sirrmeshd.service /etc/systemd/system/
 
 # Enable and start service
 sudo systemctl daemon-reload
-sudo systemctl enable sirrchatd
-sudo systemctl start sirrchatd
+sudo systemctl enable sirrmeshd
+sudo systemctl start sirrmeshd
 
 # Check status
-sudo systemctl status sirrchatd
+sudo systemctl status sirrmeshd
 
 # View logs
-sudo journalctl -u sirrchatd -f
+sudo journalctl -u sirrmeshd -f
 ```
 
 ### 后台运行（macOS/Linux）
 
 ```bash
 # Run in background using nohup
-nohup ./build/sirrchatd run > $SIRRCHAT_HOME/sirrchatd.log 2>&1 &
+nohup ./build/sirrmeshd run > $SIRRMESH_HOME/sirrmeshd.log 2>&1 &
 
 # Check process
-ps aux | grep sirrchatd
+ps aux | grep sirrmeshd
 
 # Stop process
-kill $(pgrep sirrchatd)
+kill $(pgrep sirrmeshd)
 ```
 
 ---
@@ -371,62 +371,62 @@ kill $(pgrep sirrchatd)
 
 ```bash
 # Configure DNS provider
-./build/sirrchatd dns setup
+./build/sirrmeshd dns setup
 
 # Test DNS configuration
-./build/sirrchatd dns verify
+./build/sirrmeshd dns verify
 ```
 
 ### 用户管理
 
 ```bash
 # Create user credentials
-./build/sirrchatd creds create user@example.com
+./build/sirrmeshd creds create user@example.com
 
 # List users
-./build/sirrchatd creds list
+./build/sirrmeshd creds list
 
 # Delete user
-./build/sirrchatd creds delete user@example.com
+./build/sirrmeshd creds delete user@example.com
 
 # Generate password hash
-./build/sirrchatd hash mypassword
+./build/sirrmeshd hash mypassword
 ```
 
 ### IMAP 账户管理
 
 ```bash
 # Create IMAP account
-./build/sirrchatd imap-acct create user@example.com
+./build/sirrmeshd imap-acct create user@example.com
 
 # List IMAP accounts
-./build/sirrchatd imap-acct list
+./build/sirrmeshd imap-acct list
 
 # Delete IMAP account
-./build/sirrchatd imap-acct delete user@example.com
+./build/sirrmeshd imap-acct delete user@example.com
 ```
 
 ### IMAP 邮箱管理
 
 ```bash
 # Create mailbox
-./build/sirrchatd imap-mboxes create user@example.com Inbox
+./build/sirrmeshd imap-mboxes create user@example.com Inbox
 
 # List mailboxes
-./build/sirrchatd imap-mboxes list user@example.com
+./build/sirrmeshd imap-mboxes list user@example.com
 
 # Delete mailbox
-./build/sirrchatd imap-mboxes delete user@example.com Trash
+./build/sirrmeshd imap-mboxes delete user@example.com Trash
 ```
 
 ### IMAP 消息管理
 
 ```bash
 # List messages in mailbox
-./build/sirrchatd imap-msgs list user@example.com Inbox
+./build/sirrmeshd imap-msgs list user@example.com Inbox
 
 # Delete message
-./build/sirrchatd imap-msgs delete user@example.com Inbox <message_id>
+./build/sirrmeshd imap-msgs delete user@example.com Inbox <message_id>
 ```
 
 ---
@@ -469,7 +469,7 @@ make vulncheck
 
 ```bash
 # Build and run in one step
-make build && ./build/sirrchatd run
+make build && ./build/sirrmeshd run
 ```
 
 ---
@@ -505,10 +505,10 @@ log {
 **查看日志：**
 ```bash
 # If using systemd
-sudo journalctl -u sirrchatd -f
+sudo journalctl -u sirrmeshd -f
 
 # If using nohup
-tail -f $SIRRCHAT_HOME/sirrchatd.log
+tail -f $SIRRMESH_HOME/sirrmeshd.log
 ```
 
 ---
@@ -523,7 +523,7 @@ tail -f $SIRRCHAT_HOME/sirrchatd.log
 tls {
     acme_enabled true
     acme_email admin@example.com
-    acme_storage $SIRRCHAT_HOME/acme
+    acme_storage $SIRRMESH_HOME/acme
     dns_provider cloudflare
     dns_api_token YOUR_CLOUDFLARE_TOKEN
 }
@@ -538,7 +538,7 @@ Cloudflare、Route53、DigitalOcean、Google Cloud DNS、Vultr、Hetzner、Gandi
 # Generate self-signed certificate
 openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes
 
-# Configure in sirrchatd.conf
+# Configure in sirrmeshd.conf
 tls {
     cert_file /path/to/cert.pem
     key_file /path/to/key.pem
@@ -582,21 +582,21 @@ sudo kill -9 $(lsof -t -i:25)
 
 ```bash
 # Test PostgreSQL connection
-psql -h localhost -U sirrchat -d sirrchatdb
+psql -h localhost -U sirrmesh -d sirrmeshdb
 
 # Test MySQL connection
-mysql -h localhost -u sirrchat -p sirrchatdb
+mysql -h localhost -u sirrmesh -p sirrmeshdb
 
 # Check SQLite file permissions
-ls -la $SIRRCHAT_HOME/imapsql.db
+ls -la $SIRRMESH_HOME/imapsql.db
 ```
 
 #### 3. 权限问题
 
 ```bash
-# Fix SIRRCHAT_HOME permissions
-chmod -R 755 $SIRRCHAT_HOME
-chown -R $USER:$USER $SIRRCHAT_HOME
+# Fix SIRRMESH_HOME permissions
+chmod -R 755 $SIRRMESH_HOME
+chown -R $USER:$USER $SIRRMESH_HOME
 ```
 
 #### 4. 依赖下载失败
@@ -614,10 +614,10 @@ go mod download
 
 ```bash
 # Run with verbose logging
-./build/sirrchatd run --debug --log-level=debug
+./build/sirrmeshd run --debug --log-level=debug
 
 # Enable stack traces
-./build/sirrchatd run --debug --enable-trace
+./build/sirrmeshd run --debug --enable-trace
 ```
 
 ---
@@ -636,12 +636,12 @@ go mod download
 
 ```bash
 # Show all available commands
-./build/sirrchatd --help
+./build/sirrmeshd --help
 
 # Show command-specific help
-./build/sirrchatd run --help
-./build/sirrchatd dns --help
-./build/sirrchatd creds --help
+./build/sirrmeshd run --help
+./build/sirrmeshd dns --help
+./build/sirrmeshd creds --help
 ```
 
 ### 问题反馈
@@ -660,10 +660,10 @@ go mod download
 
 ```bash
 # 1. Check binary version
-./build/sirrchatd version
+./build/sirrmeshd version
 
 # 2. Verify configuration
-./build/sirrchatd config verify
+./build/sirrmeshd config verify
 
 # 3. Test SMTP connection
 telnet localhost 25
@@ -675,7 +675,7 @@ telnet localhost 143
 curl http://localhost:9090/metrics
 ```
 
-如果所有测试通过，说明你的 SirrChat 节点已成功搭建并运行！现在你拥有了一个完全属于自己的去中心化通讯节点。
+如果所有测试通过，说明你的 SirrMesh 节点已成功搭建并运行！现在你拥有了一个完全属于自己的去中心化通讯节点。
 
 ---
 

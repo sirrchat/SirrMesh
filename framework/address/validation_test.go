@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/mail-chat-chain/mailchatd/framework/address"
+	"github.com/mail-chat-chain/sirrmeshd/framework/address"
 )
 
 func TestValidMailboxName(t *testing.T) {

@@ -1,6 +1,6 @@
 /*
-MailChat - Composable all-in-one email server.
-Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, MailChat contributors
+SirrMesh - Composable all-in-one email server.
+Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, SirrMesh contributors
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -37,15 +37,15 @@ import (
 	"github.com/emersion/go-sasl"
 	i18nlevel "github.com/foxcpp/go-imap-i18nlevel"
 	namespace "github.com/foxcpp/go-imap-namespace"
-	"github.com/mail-chat-chain/mailchatd/framework/config"
-	modconfig "github.com/mail-chat-chain/mailchatd/framework/config/module"
-	tls2 "github.com/mail-chat-chain/mailchatd/framework/config/tls"
-	"github.com/mail-chat-chain/mailchatd/framework/log"
-	"github.com/mail-chat-chain/mailchatd/framework/module"
-	"github.com/mail-chat-chain/mailchatd/internal/auth"
-	"github.com/mail-chat-chain/mailchatd/internal/authz"
-	"github.com/mail-chat-chain/mailchatd/internal/proxy_protocol"
-	"github.com/mail-chat-chain/mailchatd/internal/updatepipe"
+	"github.com/mail-chat-chain/sirrmeshd/framework/config"
+	modconfig "github.com/mail-chat-chain/sirrmeshd/framework/config/module"
+	tls2 "github.com/mail-chat-chain/sirrmeshd/framework/config/tls"
+	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/mail-chat-chain/sirrmeshd/internal/auth"
+	"github.com/mail-chat-chain/sirrmeshd/internal/authz"
+	"github.com/mail-chat-chain/sirrmeshd/internal/proxy_protocol"
+	"github.com/mail-chat-chain/sirrmeshd/internal/updatepipe"
 )
 
 type Endpoint struct {

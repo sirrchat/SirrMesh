@@ -4,12 +4,12 @@ import (
 	"context"
 	"strings"
 
-	"github.com/mail-chat-chain/mailchatd/framework/address"
-	parser "github.com/mail-chat-chain/mailchatd/framework/cfgparser"
-	"github.com/mail-chat-chain/mailchatd/framework/config"
-	modconfig "github.com/mail-chat-chain/mailchatd/framework/config/module"
-	"github.com/mail-chat-chain/mailchatd/framework/log"
-	"github.com/mail-chat-chain/mailchatd/framework/module"
+	"github.com/mail-chat-chain/sirrmeshd/framework/address"
+	parser "github.com/mail-chat-chain/sirrmeshd/framework/cfgparser"
+	"github.com/mail-chat-chain/sirrmeshd/framework/config"
+	modconfig "github.com/mail-chat-chain/sirrmeshd/framework/config/module"
+	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/mail-chat-chain/sirrmeshd/framework/module"
 )
 
 type EVMAuth struct {

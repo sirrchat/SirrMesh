@@ -16,8 +16,8 @@ import (
 	"strings"
 	"time"
 
-	parser "github.com/mail-chat-chain/mailchatd/framework/cfgparser"
-	"github.com/mail-chat-chain/mailchatd/framework/log"
+	parser "github.com/mail-chat-chain/sirrmeshd/framework/cfgparser"
+	"github.com/mail-chat-chain/sirrmeshd/framework/log"
 	"github.com/spf13/cobra"
 )
 
@@ -142,12 +142,12 @@ func loadDNSConfig() (*DNSConfig, error) {
 	
 	// 首先检查当前工作目录的配置文件
 	var configPath string
-	workingDirConfig := "mailchatd.conf"
+	workingDirConfig := "sirrmeshd.conf"
 	if _, err := os.Stat(workingDirConfig); err == nil {
 		configPath = workingDirConfig
 	} else {
 		// 如果当前目录没有，则使用默认配置目录
-		configPath = filepath.Join(ConfigDirectory, "mailchatd.conf")
+		configPath = filepath.Join(ConfigDirectory, "sirrmeshd.conf")
 		if _, err := os.Stat(configPath); os.IsNotExist(err) {
 			// 错误提示
 			log.Printf("Warning: config file not found: %s\n", configPath)
@@ -543,7 +543,7 @@ func runDNSGuide(cmd *cobra.Command, args []string) error {
 	fmt.Println("\n================================================================================")
 	fmt.Println("验证命令:")
 	fmt.Println("================================================================================")
-	fmt.Printf("mailchatd dns check %s    # 检查DNS配置\n", cfg.PrimaryDomain)
+	fmt.Printf("sirrmeshd dns check %s    # 检查DNS配置\n", cfg.PrimaryDomain)
 	fmt.Printf("dig MX %s                 # 验证MX记录\n", cfg.PrimaryDomain)
 	fmt.Printf("dig TXT %s                # 验证SPF记录\n", cfg.PrimaryDomain)
 	fmt.Printf("dig TXT default._domainkey.%s  # 验证DKIM记录\n", cfg.PrimaryDomain)
@@ -991,7 +991,7 @@ func runDNSCheck(cmd *cobra.Command, args []string) error {
 		fmt.Println("   请联系您的服务器提供商设置PTR记录。")
 	} else {
 		fmt.Println("❌ 部分必要的DNS记录缺失或配置错误。")
-		fmt.Println("   运行 'mailchatd dns guide' 查看完整配置指南。")
+		fmt.Println("   运行 'sirrmeshd dns guide' 查看完整配置指南。")
 		fmt.Println("\n缺失的记录:")
 		for _, record := range records {
 			if record.Status == "NOT_FOUND" && record.RecordType != "PTR" {

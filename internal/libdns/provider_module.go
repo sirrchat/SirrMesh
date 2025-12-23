@@ -2,7 +2,7 @@ package libdns
 
 import (
 	"github.com/libdns/libdns"
-	"github.com/mail-chat-chain/mailchatd/framework/config"
+	"github.com/mail-chat-chain/sirrmeshd/framework/config"
 )
 
 type ProviderModule struct {

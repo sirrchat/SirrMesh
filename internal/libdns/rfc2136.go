@@ -5,8 +5,8 @@ package libdns
 
 import (
 	"github.com/libdns/rfc2136"
-	"github.com/mail-chat-chain/mailchatd/framework/config"
-	"github.com/mail-chat-chain/mailchatd/framework/module"
+	"github.com/mail-chat-chain/sirrmeshd/framework/config"
+	"github.com/mail-chat-chain/sirrmeshd/framework/module"
 )
 
 func init() {

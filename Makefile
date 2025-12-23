@@ -13,13 +13,13 @@ COMMIT := $(shell git log -1 --format='%H')
 
 BINDIR ?= $(GOPATH)/bin
 BUILDDIR ?= $(CURDIR)/build
-BINARY := mailchatd
+BINARY := sirrmeshd
 
 ###############################################################################
 ###                              Repo Info                                  ###
 ###############################################################################
 
-HTTPS_GIT := https://github.com/mail-chat-chain/mailchatd.git
+HTTPS_GIT := https://github.com/mail-chat-chain/sirrmeshd.git
 DOCKER := $(shell which docker)
 
 export GO111MODULE = on
@@ -28,7 +28,7 @@ export GO111MODULE = on
 ###                            Build Settings                               ###
 ###############################################################################
 
-MAIN_PKG := ./cmd/mailchatd
+MAIN_PKG := ./cmd/sirrmeshd
 
 # process build tags
 build_tags = netgo
@@ -36,7 +36,7 @@ build_tags += $(BUILD_TAGS)
 build_tags := $(strip $(build_tags))
 
 # process linker flags
-ldflags = -X github.com/mail-chat-chain/mailchatd/config.Version=$(VERSION)
+ldflags = -X github.com/mail-chat-chain/sirrmeshd/config.Version=$(VERSION)
 
 ifeq (,$(findstring nostrip,$(BUILD_OPTIONS)))
   ldflags += -w -s
@@ -61,7 +61,7 @@ endif
 
 # Build into $(BUILDDIR)
 build: go.sum $(BUILDDIR)/
-	@echo "Building mailchatd to $(BUILDDIR)/$(BINARY) ..."
+	@echo "Building sirrmeshd to $(BUILDDIR)/$(BINARY) ..."
 	@CGO_ENABLED="1" go build $(BUILD_FLAGS) -o $(BUILDDIR)/$(BINARY) $(MAIN_PKG)
 
 # Cross-compile for Linux AMD64
@@ -82,7 +82,7 @@ build-darwin-arm64:
 
 # Install into $(BINDIR)
 install: go.sum
-	@echo "Installing mailchatd to $(BINDIR) ..."
+	@echo "Installing sirrmeshd to $(BINDIR) ..."
 	@CGO_ENABLED="1" go install $(BUILD_FLAGS) $(MAIN_PKG)
 
 $(BUILDDIR)/:
@@ -180,7 +180,7 @@ clean:
 ###                                Releasing                                ###
 ###############################################################################
 
-PACKAGE_NAME := github.com/mail-chat-chain/mailchatd
+PACKAGE_NAME := github.com/mail-chat-chain/sirrmeshd
 GOLANG_CROSS_VERSION = v1.22
 
 release-dry-run:
@@ -218,12 +218,12 @@ release:
 
 help:
 	@echo "Available targets:"
-	@echo "  build           - Build the mailchatd binary"
+	@echo "  build           - Build the sirrmeshd binary"
 	@echo "  build-linux     - Cross-compile for Linux AMD64"
 	@echo "  build-linux-arm64 - Cross-compile for Linux ARM64"
 	@echo "  build-darwin    - Cross-compile for macOS AMD64"
 	@echo "  build-darwin-arm64 - Cross-compile for macOS ARM64"
-	@echo "  install         - Install mailchatd to GOPATH/bin"
+	@echo "  install         - Install sirrmeshd to GOPATH/bin"
 	@echo "  test            - Run unit tests"
 	@echo "  test-race       - Run tests with race detection"
 	@echo "  test-cover      - Run tests with coverage"

@@ -7,8 +7,8 @@ import (
 // NewRootCmd creates a new root command for the mail server application.
 func NewRootCmd() *cobra.Command {
 	rootCmd := &cobra.Command{
-		Use:   "mailchatd",
-		Short: "MailChat - Composable all-in-one email server",
+		Use:   "sirrmeshd",
+		Short: "SirrMesh - Composable all-in-one email server",
 		PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
 			cmd.SetOut(cmd.OutOrStdout())
 			cmd.SetErr(cmd.ErrOrStderr())

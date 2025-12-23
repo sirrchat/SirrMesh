@@ -1,6 +1,6 @@
 /*
-MailChat - Composable all-in-one email server.
-Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, MailChat contributors
+SirrMesh - Composable all-in-one email server.
+Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, SirrMesh contributors
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,8 +23,8 @@ import (
 	"crypto/x509"
 	"time"
 
-	"github.com/mail-chat-chain/mailchatd/framework/dns"
-	"github.com/mail-chat-chain/mailchatd/framework/exterrors"
+	"github.com/mail-chat-chain/sirrmeshd/framework/dns"
+	"github.com/mail-chat-chain/sirrmeshd/framework/exterrors"
 )
 
 // Used to override verification time for DANE-TA tests.

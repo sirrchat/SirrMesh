@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/lib/pq"
-	"github.com/mail-chat-chain/mailchatd/framework/log"
+	"github.com/mail-chat-chain/sirrmeshd/framework/log"
 )
 
 type Msg struct {

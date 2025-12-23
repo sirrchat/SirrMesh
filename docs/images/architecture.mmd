@@ -1,0 +1,25 @@
+flowchart TB
+    subgraph Client["客户端 (Client)"]
+        C1[查询已认证节点列表]
+    end
+
+    subgraph Contract["NodeRegistry 合约"]
+        R[register<br/>节点注册]
+        V[vote<br/>多签投票]
+        Q[getApprovedNodes<br/>节点列表查询]
+    end
+
+    subgraph Operators["节点运营者"]
+        O1[提交节点]
+    end
+
+    subgraph Validators["认证委员会"]
+        V1[投票认证]
+    end
+
+    C1 --> Q
+    O1 --> R
+    V1 --> V
+    R --> Contract
+    V --> Contract
+    Q --> Contract

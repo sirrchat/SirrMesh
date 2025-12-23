@@ -1,15 +1,15 @@
-# SirrChat
+# SirrMesh
 
-**SirrChat** is a decentralized encrypted communication system that enables anyone to build and run their own communication node. By integrating blockchain authentication with enterprise-grade email protocols, SirrChat provides users with a fully autonomous and controllable communication platform, achieving true data sovereignty and privacy protection.
+**SirrMesh** is a decentralized encrypted communication system that enables anyone to build and run their own communication node. By integrating blockchain authentication with enterprise-grade email protocols, SirrMesh provides users with a fully autonomous and controllable communication platform, achieving true data sovereignty and privacy protection.
 
-**Build your own SirrChat node. Take control of your communication data.**
+**Build your own SirrMesh node. Take control of your communication data.**
 
 [![License](https://img.shields.io/badge/license-GPL%203.0-blue)](LICENSE)
 [![Go Version](https://img.shields.io/badge/go-1.24+-blue.svg)](https://golang.org)
 
 [English](README.md) | [中文](README_ZH.md)
 
-## Why Build Your Own SirrChat Node?
+## Why Build Your Own SirrMesh Node?
 
 - 🔐 **Data Sovereignty** - All communication data stored on your own server
 - 🌐 **Decentralization** - No dependence on any third-party service providers
@@ -41,16 +41,16 @@
 
 ### One-Click Node Setup
 
-Quickly deploy your SirrChat node with a single command:
+Quickly deploy your SirrMesh node with a single command:
 
 ```bash
 # Download and run the installation script
-curl -sSL https://raw.githubusercontent.com/mail-chat-chain/sirrchatd/main/start.sh | bash
+curl -sSL https://raw.githubusercontent.com/mail-chat-chain/sirrmeshd/main/start.sh | bash
 ```
 
 The automated installer will help you quickly set up an independent node:
 
-1. **Download & Install** the `sirrchatd` node program
+1. **Download & Install** the `sirrmeshd` node program
 2. **Domain Configuration** - Set up your node domain
 3. **DNS Provider Setup** - Choose from 15 supported providers
 4. **TLS Certificate** - Automatic ACME DNS-01 challenge setup
@@ -93,21 +93,21 @@ Software Dependencies:
 
 ```bash
 # Clone the repository
-git clone https://github.com/mail-chat-chain/sirrchatd.git
-cd sirrchatd
+git clone https://github.com/mail-chat-chain/sirrmeshd.git
+cd sirrmeshd
 
 # Build the binary
 make build
 
 # Verify installation
-./build/sirrchatd --help
+./build/sirrmeshd --help
 ```
 
 ### Start Your Node
 
 ```bash
-# Run your SirrChat node
-./sirrchatd run
+# Run your SirrMesh node
+./sirrmeshd run
 
 # Or use the start.sh script for automated node configuration and startup
 ./start.sh
@@ -127,7 +127,7 @@ make build
 ### Node Configuration Example
 
 ```
-# sirrchatd.conf - Your node configuration file
+# sirrmeshd.conf - Your node configuration file
 $(hostname) = mx1.example.com
 $(primary_domain) = example.com
 
@@ -149,7 +149,7 @@ storage.imapsql local_mailboxes {
 }
 
 auth.pass_blockchain blockchain_auth {
-    blockchain &sirrchatd
+    blockchain &sirrmeshd
     storage &local_mailboxes
 }
 
@@ -171,25 +171,25 @@ imap tls://0.0.0.0:993 {
 
 ```bash
 # Configure DNS settings
-sirrchatd dns config
+sirrmeshd dns config
 
 # Check DNS configuration
-sirrchatd dns check
+sirrmeshd dns check
 
 # Export DNS records for domain setup
-sirrchatd dns export
+sirrmeshd dns export
 
 # Get public IP for A records
-sirrchatd dns ip
+sirrmeshd dns ip
 ```
 
 ## Node Management Commands
 
 ```
-sirrchatd [command]
+sirrmeshd [command]
 
 Available Commands:
-  run          Start the SirrChat node
+  run          Start the SirrMesh node
   creds        Node user credentials management
   dns          DNS configuration guide and checker
   hash         Generate password hashes for use with pass_table
@@ -253,7 +253,7 @@ Available Commands:
 ### Performance Tuning
 
 ```
-# sirrchatd.conf
+# sirrmeshd.conf
 
 smtp tcp://0.0.0.0:8825 {
     limits {
@@ -305,4 +305,4 @@ This project is licensed under the GPL 3.0 License - see the [LICENSE](LICENSE) 
 
 ---
 
-**SirrChat** - Decentralized Encrypted Communication System. Build Your Own Communication Node.
+**SirrMesh** - Decentralized Encrypted Communication System. Build Your Own Communication Node.

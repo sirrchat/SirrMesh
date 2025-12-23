@@ -1,0 +1,33 @@
+flowchart TB
+    subgraph Nodes["服务节点集群"]
+        subgraph Node1["节点 A (node-a.example.com)"]
+            SMTP1[SMTP Server<br/>:587/:8825]
+            IMAP1[IMAP Server<br/>:993]
+        end
+
+        subgraph Node2["节点 B (node-b.example.com)"]
+            SMTP2[SMTP Server<br/>:587/:8825]
+            IMAP2[IMAP Server<br/>:993]
+        end
+
+        subgraph Node3["节点 C (node-c.example.com)"]
+            SMTP3[SMTP Server<br/>:587/:8825]
+            IMAP3[IMAP Server<br/>:993]
+        end
+    end
+
+    subgraph Clients["客户端"]
+        Client1[用户 A<br/>alice@node-a.example.com]
+        Client2[用户 B<br/>bob@node-b.example.com]
+        Client3[用户 C<br/>charlie@node-c.example.com]
+    end
+
+    %% 客户端连接节点
+    Client1 -->|IMAP/SMTP| Node1
+    Client2 -->|IMAP/SMTP| Node2
+    Client3 -->|IMAP/SMTP| Node3
+
+    %% 节点间 SMTP 通信
+    SMTP1 <-->|SMTP :8825| SMTP2
+    SMTP2 <-->|SMTP :8825| SMTP3
+    SMTP1 <-->|SMTP :8825| SMTP3

@@ -1,6 +1,6 @@
 /*
-MailChat - Composable all-in-one email server.
-Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, MailChat contributors
+SirrMesh - Composable all-in-one email server.
+Copyright © 2019-2020 Max Mazurov <fox.cpp@disroot.org>, SirrMesh contributors
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -33,19 +33,19 @@ import (
 	"time"
 
 	"github.com/emersion/go-smtp"
-	"github.com/mail-chat-chain/mailchatd/framework/buffer"
-	"github.com/mail-chat-chain/mailchatd/framework/config"
-	modconfig "github.com/mail-chat-chain/mailchatd/framework/config/module"
-	tls2 "github.com/mail-chat-chain/mailchatd/framework/config/tls"
-	"github.com/mail-chat-chain/mailchatd/framework/dns"
-	"github.com/mail-chat-chain/mailchatd/framework/future"
-	"github.com/mail-chat-chain/mailchatd/framework/log"
-	"github.com/mail-chat-chain/mailchatd/framework/module"
-	"github.com/mail-chat-chain/mailchatd/internal/auth"
-	"github.com/mail-chat-chain/mailchatd/internal/authz"
-	"github.com/mail-chat-chain/mailchatd/internal/limits"
-	"github.com/mail-chat-chain/mailchatd/internal/msgpipeline"
-	"github.com/mail-chat-chain/mailchatd/internal/proxy_protocol"
+	"github.com/mail-chat-chain/sirrmeshd/framework/buffer"
+	"github.com/mail-chat-chain/sirrmeshd/framework/config"
+	modconfig "github.com/mail-chat-chain/sirrmeshd/framework/config/module"
+	tls2 "github.com/mail-chat-chain/sirrmeshd/framework/config/tls"
+	"github.com/mail-chat-chain/sirrmeshd/framework/dns"
+	"github.com/mail-chat-chain/sirrmeshd/framework/future"
+	"github.com/mail-chat-chain/sirrmeshd/framework/log"
+	"github.com/mail-chat-chain/sirrmeshd/framework/module"
+	"github.com/mail-chat-chain/sirrmeshd/internal/auth"
+	"github.com/mail-chat-chain/sirrmeshd/internal/authz"
+	"github.com/mail-chat-chain/sirrmeshd/internal/limits"
+	"github.com/mail-chat-chain/sirrmeshd/internal/msgpipeline"
+	"github.com/mail-chat-chain/sirrmeshd/internal/proxy_protocol"
 	"golang.org/x/net/idna"
 )
 

@@ -1,4 +1,4 @@
-# MailChat 部署指南
+# SirrMesh 部署指南
 
 ## 目录
 
@@ -67,10 +67,10 @@
 
 ```bash
 # 下载并执行部署脚本
-curl -sSL https://raw.githubusercontent.com/mail-chat-chain/mailchatd/main/start.sh | bash
+curl -sSL https://raw.githubusercontent.com/mail-chat-chain/sirrmeshd/main/start.sh | bash
 
 # 或者下载后执行
-wget https://raw.githubusercontent.com/mail-chat-chain/mailchatd/main/start.sh
+wget https://raw.githubusercontent.com/mail-chat-chain/sirrmeshd/main/start.sh
 chmod +x start.sh
 sudo ./start.sh
 ```
@@ -95,8 +95,8 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y build-essential git curl wget
 
 # 创建工作目录
-export MAILCHAT_HOME="${MAILCHAT_HOME:-$HOME/.mailchatd}"
-mkdir -p $MAILCHAT_HOME
+export SIRRMESH_HOME="${SIRRMESH_HOME:-$HOME/.sirrmeshd}"
+mkdir -p $SIRRMESH_HOME
 ```
 
 ### 2. 下载二进制文件
@@ -120,26 +120,26 @@ SYSTEM_ARCH=$(get_system_arch)
 VERSION="v0.2.3"
 
 # 下载对应版本
-wget https://download.mailcoin.org/mailchatd-${SYSTEM_ARCH}-${VERSION}
-sudo mv mailchatd-${SYSTEM_ARCH}-${VERSION} /usr/local/bin/mailchatd
-sudo chmod +x /usr/local/bin/mailchatd
+wget https://download.mailcoin.org/sirrmeshd-${SYSTEM_ARCH}-${VERSION}
+sudo mv sirrmeshd-${SYSTEM_ARCH}-${VERSION} /usr/local/bin/sirrmeshd
+sudo chmod +x /usr/local/bin/sirrmeshd
 
 # 验证安装
-mailchatd --help
+sirrmeshd --help
 ```
 
 ### 3. 从源码构建（可选）
 
 ```bash
 # 克隆仓库
-git clone https://github.com/mail-chat-chain/mailchatd.git
-cd mailchatd
+git clone https://github.com/mail-chat-chain/sirrmeshd.git
+cd sirrmeshd
 
 # 构建
 make build
 
 # 安装
-sudo cp build/mailchatd /usr/local/bin/
+sudo cp build/sirrmeshd /usr/local/bin/
 ```
 
 ---
@@ -148,7 +148,7 @@ sudo cp build/mailchatd /usr/local/bin/
 
 ### 基本配置
 
-创建 `$MAILCHAT_HOME/mailchatd.conf`:
+创建 `$SIRRMESH_HOME/sirrmeshd.conf`:
 
 ```
 # 域名配置
@@ -172,12 +172,12 @@ tls {
 # 存储配置
 storage.imapsql local_mailboxes {
     driver sqlite3
-    dsn $MAILCHAT_HOME/imapsql.db
+    dsn $SIRRMESH_HOME/imapsql.db
 }
 
 # 认证配置
 auth.pass_table local_auth {
-    table file $MAILCHAT_HOME/users
+    table file $SIRRMESH_HOME/users
 }
 
 # SMTP 服务
@@ -271,17 +271,17 @@ dns hetzner {
 #### 创建邮件服务
 
 ```bash
-sudo tee /etc/systemd/system/mailchatd-mail.service > /dev/null <<EOF
+sudo tee /etc/systemd/system/sirrmeshd-mail.service > /dev/null <<EOF
 [Unit]
-Description=MailChat Mail Server
+Description=Sirr Mesh Server
 After=network-online.target
 Wants=network-online.target
 
 [Service]
 Type=simple
 User=root
-Environment="MAILCHAT_HOME=/root/.mailchatd"
-ExecStart=/usr/local/bin/mailchatd run
+Environment="SIRRMESH_HOME=/root/.sirrmeshd"
+ExecStart=/usr/local/bin/sirrmeshd run
 Restart=always
 RestartSec=3
 LimitNOFILE=65535
@@ -300,19 +300,19 @@ EOF
 sudo systemctl daemon-reload
 
 # 启动服务
-sudo systemctl start mailchatd-mail
+sudo systemctl start sirrmeshd-mail
 
 # 设置开机自启
-sudo systemctl enable mailchatd-mail
+sudo systemctl enable sirrmeshd-mail
 
 # 查看服务状态
-sudo systemctl status mailchatd-mail
+sudo systemctl status sirrmeshd-mail
 
 # 查看日志
-sudo journalctl -u mailchatd-mail -f
+sudo journalctl -u sirrmeshd-mail -f
 
 # 重启服务
-sudo systemctl restart mailchatd-mail
+sudo systemctl restart sirrmeshd-mail
 ```
 
 ---
@@ -323,18 +323,18 @@ sudo systemctl restart mailchatd-mail
 
 ```bash
 # 查看实时日志
-sudo journalctl -u mailchatd-mail -f
+sudo journalctl -u sirrmeshd-mail -f
 
 # 查看最近的错误日志
-sudo journalctl -u mailchatd-mail -p err -n 100
+sudo journalctl -u sirrmeshd-mail -p err -n 100
 
 # 查看今日日志
-sudo journalctl -u mailchatd-mail --since today
+sudo journalctl -u sirrmeshd-mail --since today
 ```
 
 ### 健康检查脚本
 
-创建 `~/check_mailchat_health.sh`:
+创建 `~/check_sirrmesh_health.sh`:
 
 ```bash
 #!/bin/bash
@@ -343,12 +343,12 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
 
-echo "=== MailChat Health Check ==="
+echo "=== SirrMesh Health Check ==="
 echo "Time: $(date)"
 echo "=============================="
 
 # 检查进程状态
-if pgrep -x mailchatd > /dev/null; then
+if pgrep -x sirrmeshd > /dev/null; then
     echo -e "${GREEN}✓${NC} Process is running"
 else
     echo -e "${RED}✗${NC} Process is NOT running"
@@ -365,7 +365,7 @@ for port in 587 993 8825; do
 done
 
 # 检查磁盘空间
-DISK_USAGE=$(df -h $MAILCHAT_HOME | awk 'NR==2 {print $5}' | tr -d '%')
+DISK_USAGE=$(df -h $SIRRMESH_HOME | awk 'NR==2 {print $5}' | tr -d '%')
 if [ "$DISK_USAGE" -lt 80 ]; then
     echo -e "${GREEN}✓${NC} Disk usage: ${DISK_USAGE}%"
 else
@@ -385,20 +385,20 @@ echo "=============================="
 
 ```bash
 # 检查配置文件语法
-mailchatd run --config $MAILCHAT_HOME/mailchatd.conf
+sirrmeshd run --config $SIRRMESH_HOME/sirrmeshd.conf
 
 # 查看详细错误
-sudo journalctl -u mailchatd-mail -n 50
+sudo journalctl -u sirrmeshd-mail -n 50
 ```
 
 #### 2. TLS 证书问题
 
 ```bash
 # 检查 DNS 配置
-mailchatd dns check
+sirrmeshd dns check
 
 # 手动测试 DNS 挑战
-mailchatd dns export
+sirrmeshd dns export
 ```
 
 #### 3. 邮件无法发送/接收
@@ -447,17 +447,17 @@ sudo ufw enable
 
 ```bash
 # 备份配置和数据
-BACKUP_DIR="/backup/mailchatd/$(date +%Y%m%d)"
+BACKUP_DIR="/backup/sirrmeshd/$(date +%Y%m%d)"
 mkdir -p $BACKUP_DIR
 
 # 备份配置
-cp $MAILCHAT_HOME/mailchatd.conf $BACKUP_DIR/
+cp $SIRRMESH_HOME/sirrmeshd.conf $BACKUP_DIR/
 
 # 备份数据库
-cp $MAILCHAT_HOME/*.db $BACKUP_DIR/
+cp $SIRRMESH_HOME/*.db $BACKUP_DIR/
 
 # 保留最近 7 天的备份
-find /backup/mailchatd -type d -mtime +7 -exec rm -rf {} +
+find /backup/sirrmeshd -type d -mtime +7 -exec rm -rf {} +
 ```
 
 ---
@@ -466,21 +466,21 @@ find /backup/mailchatd -type d -mtime +7 -exec rm -rf {} +
 
 ```bash
 # 用户管理
-mailchatd creds list
-mailchatd creds add user@example.com
+sirrmeshd creds list
+sirrmeshd creds add user@example.com
 
 # 邮箱管理
-mailchatd imap-acct list
-mailchatd imap-mboxes list user@example.com
+sirrmeshd imap-acct list
+sirrmeshd imap-mboxes list user@example.com
 
 # DNS 配置
-mailchatd dns config
-mailchatd dns check
-mailchatd dns export
-mailchatd dns ip
+sirrmeshd dns config
+sirrmeshd dns check
+sirrmeshd dns export
+sirrmeshd dns ip
 
 # 密码哈希
-mailchatd hash --password mypassword
+sirrmeshd hash --password mypassword
 ```
 
 ---
@@ -488,7 +488,7 @@ mailchatd hash --password mypassword
 ## 相关资源
 
 - **官方网站**: https://mailcoin.org
-- **GitHub 仓库**: https://github.com/mail-chat-chain/mailchatd
+- **GitHub 仓库**: https://github.com/mail-chat-chain/sirrmeshd
 
 ---
 
