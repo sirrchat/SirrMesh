@@ -19,7 +19,7 @@ BINARY := sirrmeshd
 ###                              Repo Info                                  ###
 ###############################################################################
 
-HTTPS_GIT := https://github.com/mail-chat-chain/sirrmeshd.git
+HTTPS_GIT := https://github.com/sirrchat/sirrmesh.git
 DOCKER := $(shell which docker)
 
 export GO111MODULE = on
@@ -180,7 +180,7 @@ clean:
 ###                                Releasing                                ###
 ###############################################################################
 
-PACKAGE_NAME := github.com/mail-chat-chain/sirrmeshd
+PACKAGE_NAME := github.com/sirrchat/sirrmesh
 GOLANG_CROSS_VERSION = v1.22
 
 release-dry-run:

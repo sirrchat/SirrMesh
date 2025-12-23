@@ -67,10 +67,10 @@
 
 ```bash
 # 下载并执行部署脚本
-curl -sSL https://raw.githubusercontent.com/mail-chat-chain/sirrmeshd/main/start.sh | bash
+curl -sSL https://raw.githubusercontent.com/sirrchat/sirrmesh/main/start.sh | bash
 
 # 或者下载后执行
-wget https://raw.githubusercontent.com/mail-chat-chain/sirrmeshd/main/start.sh
+wget https://raw.githubusercontent.com/sirrchat/sirrmesh/main/start.sh
 chmod +x start.sh
 sudo ./start.sh
 ```
@@ -132,7 +132,7 @@ sirrmeshd --help
 
 ```bash
 # 克隆仓库
-git clone https://github.com/mail-chat-chain/sirrmeshd.git
+git clone https://github.com/sirrchat/sirrmesh.git
 cd sirrmeshd
 
 # 构建
@@ -271,7 +271,7 @@ dns hetzner {
 #### 创建邮件服务
 
 ```bash
-sudo tee /etc/systemd/system/sirrmeshd-mail.service > /dev/null <<EOF
+sudo tee /etc/systemd/system/sirrmeshd.service > /dev/null <<EOF
 [Unit]
 Description=Sirr Mesh Server
 After=network-online.target
@@ -300,19 +300,19 @@ EOF
 sudo systemctl daemon-reload
 
 # 启动服务
-sudo systemctl start sirrmeshd-mail
+sudo systemctl start sirrmeshd
 
 # 设置开机自启
-sudo systemctl enable sirrmeshd-mail
+sudo systemctl enable sirrmeshd
 
 # 查看服务状态
-sudo systemctl status sirrmeshd-mail
+sudo systemctl status sirrmeshd
 
 # 查看日志
-sudo journalctl -u sirrmeshd-mail -f
+sudo journalctl -u sirrmeshd -f
 
 # 重启服务
-sudo systemctl restart sirrmeshd-mail
+sudo systemctl restart sirrmeshd
 ```
 
 ---
@@ -323,13 +323,13 @@ sudo systemctl restart sirrmeshd-mail
 
 ```bash
 # 查看实时日志
-sudo journalctl -u sirrmeshd-mail -f
+sudo journalctl -u sirrmeshd -f
 
 # 查看最近的错误日志
-sudo journalctl -u sirrmeshd-mail -p err -n 100
+sudo journalctl -u sirrmeshd -p err -n 100
 
 # 查看今日日志
-sudo journalctl -u sirrmeshd-mail --since today
+sudo journalctl -u sirrmeshd --since today
 ```
 
 ### 健康检查脚本
@@ -388,7 +388,7 @@ echo "=============================="
 sirrmeshd run --config $SIRRMESH_HOME/sirrmeshd.conf
 
 # 查看详细错误
-sudo journalctl -u sirrmeshd-mail -n 50
+sudo journalctl -u sirrmeshd -n 50
 ```
 
 #### 2. TLS 证书问题

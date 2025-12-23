@@ -45,7 +45,7 @@
 
 ```bash
 # 下载并运行安装脚本
-curl -sSL https://raw.githubusercontent.com/mail-chat-chain/sirrmeshd/main/start.sh | bash
+curl -sSL https://raw.githubusercontent.com/sirrchat/sirrmesh/main/start.sh | bash
 ```
 
 自动安装程序将执行以下操作，帮你快速搭建独立节点：

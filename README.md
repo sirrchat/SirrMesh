@@ -45,7 +45,7 @@ Quickly deploy your SirrMesh node with a single command:
 
 ```bash
 # Download and run the installation script
-curl -sSL https://raw.githubusercontent.com/mail-chat-chain/sirrmeshd/main/start.sh | bash
+curl -sSL https://raw.githubusercontent.com/sirrchat/sirrmesh/main/start.sh | bash
 ```
 
 The automated installer will help you quickly set up an independent node:
